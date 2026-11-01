@@ -1,4 +1,4 @@
-# WordMap
+# myEcard
 
 A personal English vocabulary app built around a knowledge map of 10,000 words (the 2,809 NGSL core plus 7,191 extended words). Placement test, daily
 spaced-repetition sessions (SM-2), band map, search, progress and offline use as an installable PWA.
@@ -65,7 +65,7 @@ their cached word list when it changes.
 ### Vietnamese meanings
 
 Every word has a short Vietnamese meaning (`vi`, `contentVersion` "3"). Sources, highest priority first:
-`apps/api/data/raw/vi-meanings.json` (reviewed, written for WordMap) then Wiktionary translation tables cached in
+`apps/api/data/raw/vi-meanings.json` (reviewed, written for myEcard) then Wiktionary translation tables cached in
 `apps/api/data/cache/vi-wiktionary.json` (CC BY-SA 3.0). Run after `build:words` (a rebuild drops `vi`):
 
 ```

@@ -6,5 +6,5 @@ export class CreditsCopy {
   static readonly FAILED = 'Credits could not be loaded.'
   static readonly EMPTY = 'No credits are listed yet.'
   static readonly INTRO =
-    'WordMap maps the most useful English words, starting from the New General Service List. Word data, definitions and example sentences come from the open sources below.'
+    'myEcard maps the most useful English words, starting from the New General Service List. Word data, definitions and example sentences come from the open sources below.'
 }

@@ -21,7 +21,7 @@
     "name": "Vietnamese meanings",
     "license": "CC BY-SA 3.0",
     "url": "https://kaikki.org/dictionary/English/",
-    "note": "Vietnamese translations from Wiktionary (kaikki.org extracts); gaps filled with short meanings written for WordMap."
+    "note": "Vietnamese translations from Wiktionary (kaikki.org extracts); gaps filled with short meanings written for myEcard."
   },
   {
     "name": "Tatoeba",
@@ -33,7 +33,7 @@
     "name": "Custom entries",
     "license": "CC BY-SA 4.0",
     "url": "#",
-    "note": "Original definitions and sentences written for WordMap to fill gaps."
+    "note": "Original definitions and sentences written for myEcard to fill gaps."
   },
   {
     "name": "Inter, IBM Plex Mono, Source Serif 4",

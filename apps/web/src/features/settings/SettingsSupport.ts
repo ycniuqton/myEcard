@@ -28,7 +28,7 @@ export class SettingsCopy {
   static readonly DAILY_MAX = 20
   static readonly FILE_TYPE = 'application/json'
   static readonly FILE_ACCEPT = 'application/json,.json'
-  static readonly FILE_PREFIX = 'wordmap-progress-'
+  static readonly FILE_PREFIX = 'myecard-progress-'
   static readonly FILE_EXT = '.json'
   static readonly RESET_CONFIRM = 'Reset all progress? This cannot be undone.'
   static readonly IMPORT_CONFIRM = 'Replace all current progress with this file?'

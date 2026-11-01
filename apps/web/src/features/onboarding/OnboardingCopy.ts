@@ -2,7 +2,7 @@
 
 /** User-facing copy and tunables of the welcome and placement screens. */
 export class OnboardingCopy {
-  static readonly BRAND = 'WordMap'
+  static readonly BRAND = 'myEcard'
   static readonly WELCOME_TITLE = 'Learn the words that matter most.'
   static readonly WELCOME_SUB = 'The most useful English words, laid out as a map you fill in one day at a time.'
   static readonly PERKS: readonly (readonly [string, string])[] = [

@@ -76,7 +76,7 @@ test.describe('settings data tools', () => {
     const downloading = page.waitForEvent('download')
     await ui.id('export-json').click()
     const download = await downloading
-    expect(download.suggestedFilename()).toMatch(/^wordmap-progress-\d{4}-\d{2}-\d{2}\.json$/)
+    expect(download.suggestedFilename()).toMatch(/^myecard-progress-\d{4}-\d{2}-\d{2}\.json$/)
     const snapshot = JSON.parse(readFileSync((await download.path()) as string, 'utf8'))
     expect(snapshot.version).toBe(1)
     expect(snapshot.userWords.map((w: { wordId: string }) => w.wordId).sort()).toEqual([1, 2, 3].map(wordId))

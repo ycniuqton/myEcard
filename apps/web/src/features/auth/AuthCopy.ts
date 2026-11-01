@@ -3,7 +3,7 @@ import { FieldProblem } from '../../auth/AuthRules'
 
 /** User-facing copy of the account screens. */
 export class AuthCopy {
-  static readonly BRAND = 'WordMap'
+  static readonly BRAND = 'myEcard'
   static readonly EMAIL = 'Email'
   static readonly PASSWORD = 'Password'
   static readonly NEW_PASSWORD = 'New password'

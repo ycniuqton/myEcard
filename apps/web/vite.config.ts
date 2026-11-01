@@ -48,8 +48,8 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: 'WordMap',
-        short_name: 'WordMap',
+        name: 'myEcard',
+        short_name: 'myEcard',
         description: 'Learn English vocabulary with a knowledge map',
         theme_color: BRAND,
         background_color: PAPER,
