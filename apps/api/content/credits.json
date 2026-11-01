@@ -1,0 +1,44 @@
+[
+  {
+    "name": "NGSL 1.2 stats and frequencies to 31k",
+    "license": "CC BY-SA 4.0",
+    "url": "https://www.newgeneralservicelist.com/new-general-service-list",
+    "note": "Browne, Culligan and Phillips, New General Service List 1.2 (frequencies to 31k). Frequency order of the words ranked 2810 to 10000; the word file remains CC BY-SA 4.0."
+  },
+  {
+    "name": "NGSL 1.2 and NGSL-Spoken 1.2",
+    "license": "CC BY-SA 4.0",
+    "url": "https://www.newgeneralservicelist.com/",
+    "note": "Browne, Culligan and Phillips. Word ranks, spoken tag and inflected forms. Modified word file remains CC BY-SA 4.0."
+  },
+  {
+    "name": "Wiktionary via dictionaryapi.dev and kaikki.org",
+    "license": "CC BY-SA 3.0",
+    "url": "https://dictionaryapi.dev/",
+    "note": "Definitions, parts of speech and IPA (kaikki.org Wiktionary extracts as fallback)."
+  },
+  {
+    "name": "Tatoeba",
+    "license": "CC BY 2.0 FR",
+    "url": "https://tatoeba.org/",
+    "note": "Example sentences; each carries its Tatoeba sentence id (tatoeba.org/sentences/show/ID)."
+  },
+  {
+    "name": "Custom entries",
+    "license": "CC BY-SA 4.0",
+    "url": "#",
+    "note": "Original definitions and sentences written for WordMap to fill gaps."
+  },
+  {
+    "name": "Inter, IBM Plex Mono, Source Serif 4",
+    "license": "SIL OFL 1.1",
+    "url": "https://fontsource.org/",
+    "note": "Typefaces."
+  },
+  {
+    "name": "Web Speech API",
+    "license": "Browser built-in",
+    "url": "https://developer.mozilla.org/docs/Web/API/Web_Speech_API",
+    "note": "Pronunciation audio; no audio data shipped."
+  }
+]

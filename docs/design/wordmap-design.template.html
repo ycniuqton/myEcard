@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="f6e80331-f131-462c-9931-9e196e02afc6"></script>
+
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.googleapis.com"><style>/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("4ec723b8-cc1a-4a68-8bd4-91b3d2c0464f") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("1d678a44-e92d-4be3-a7c0-51303a2a4f49") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("9758baed-7eb7-43b5-9916-e4ac7e8ad981") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fcd8ff34-e424-435a-a765-8ff62b752eb7") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e0a6db10-881f-4ef7-8fb8-fe9aa2ccd117") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("7b91a31f-df64-40ce-98ca-2b6d36b15395") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("f4c87a38-58b8-4973-bcd7-cb5752560781") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("2524ac37-01ae-4a39-a844-eb2da77f91f3") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("853b9517-cd95-47f5-9544-1a8fc73f468e") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("892a832e-23c4-4127-b6e6-14c0d794771a") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("91d45aee-1bad-46e7-9a98-30532707af83") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("764d15f0-63d6-4310-ad9e-a7c95a3e0d5a") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("d169a08a-5b2f-4d5f-af2e-1c192371c624") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f24e13af-c128-4c72-87d9-66d38868d9f0") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5ceb8774-40d3-49d5-b96a-a1f48fc93af3") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("b7e62ba1-d318-4b64-b954-d519b7bad030") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8983ff02-ea4e-4473-b45a-3c0ebcad5647") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("91d45aee-1bad-46e7-9a98-30532707af83") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("764d15f0-63d6-4310-ad9e-a7c95a3e0d5a") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("d169a08a-5b2f-4d5f-af2e-1c192371c624") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f24e13af-c128-4c72-87d9-66d38868d9f0") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5ceb8774-40d3-49d5-b96a-a1f48fc93af3") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("b7e62ba1-d318-4b64-b954-d519b7bad030") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8983ff02-ea4e-4473-b45a-3c0ebcad5647") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("91d45aee-1bad-46e7-9a98-30532707af83") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("764d15f0-63d6-4310-ad9e-a7c95a3e0d5a") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("d169a08a-5b2f-4d5f-af2e-1c192371c624") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("f24e13af-c128-4c72-87d9-66d38868d9f0") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5ceb8774-40d3-49d5-b96a-a1f48fc93af3") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("b7e62ba1-d318-4b64-b954-d519b7bad030") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("8983ff02-ea4e-4473-b45a-3c0ebcad5647") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("91d45aee-1bad-46e7-9a98-30532707af83") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("764d15f0-63d6-4310-ad9e-a7c95a3e0d5a") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("d169a08a-5b2f-4d5f-af2e-1c192371c624") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("f24e13af-c128-4c72-87d9-66d38868d9f0") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("5ceb8774-40d3-49d5-b96a-a1f48fc93af3") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("b7e62ba1-d318-4b64-b954-d519b7bad030") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("8983ff02-ea4e-4473-b45a-3c0ebcad5647") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("0ce0ab93-7ca5-4c2d-a561-1464a725b08a") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("44d46816-1b20-48bd-8997-a9150dfe3c77") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c429fc64-965d-4721-9579-8ce5745bb2e4") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5297dbc2-ae3f-4dc0-a708-08dab13cfcd2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7e6fd85d-eaa0-44a3-90b2-4471c82a640d") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("25fa2f8a-f9bc-4ffb-9e40-47cf6669e9de") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("0ce0ab93-7ca5-4c2d-a561-1464a725b08a") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("44d46816-1b20-48bd-8997-a9150dfe3c77") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("c429fc64-965d-4721-9579-8ce5745bb2e4") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5297dbc2-ae3f-4dc0-a708-08dab13cfcd2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("7e6fd85d-eaa0-44a3-90b2-4471c82a640d") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("25fa2f8a-f9bc-4ffb-9e40-47cf6669e9de") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style><style>body{margin:0}a{color:#3D5AFE}a:hover{color:#1a3ae0}input::placeholder{color:var(--muted)}.wm-l{--bg:#F7F5F0;--surface:#FFFFFF;--text:#1A1A1A;--muted:#6B6B6B;--border:#E6E2D9;--brand:#3D5AFE;--onbrand:#FFFFFF;--brandsoft:rgba(61,90,254,.10);--unk:#E8E5DE;--lrn:#F5A623;--kno:#34A0A4;--mas:#1E6F5C;--masin:#3F9580;--dot:rgba(26,26,26,.72);--again:#E5484D;--hard:#F5A623;--good:#34A0A4;--easy:#3D5AFE;--shadow:0 1px 2px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.05);--line:transparent;--tint:#ECE9E2;--frame:#d6d2c8;--desk:#E9E6DF}.wm-d{--bg:#111214;--surface:#1B1C20;--text:#F2F2F2;--muted:#9A9AA0;--border:#2A2B31;--brand:#7C8CFF;--onbrand:#111214;--brandsoft:rgba(124,140,255,.16);--unk:#26272C;--lrn:#F7B84B;--kno:#4CC3C7;--mas:#2FA58A;--masin:#17614F;--dot:rgba(17,18,20,.8);--again:#FF6369;--hard:#F7B84B;--good:#4CC3C7;--easy:#7C8CFF;--shadow:none;--line:#2A2B31;--tint:#24252A;--frame:#000;--desk:#2B2C30}@keyframes wmIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@keyframes wmPop{0%{transform:scale(1)}45%{transform:scale(1.5)}100%{transform:scale(1)}}@keyframes wmUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}</style></helmet>
+<div class="{{ themeClass }}" style="min-height:100vh;background:var(--desk);display:flex;align-items:center;justify-content:center;padding:32px 16px;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif">
+<div style="width:390px;height:844px;flex:none;border-radius:48px;overflow:hidden;background:var(--bg);color:var(--text);display:flex;flex-direction:column;box-shadow:0 0 0 10px var(--frame),0 24px 60px rgba(0,0,0,.22);position:relative;transition:background 200ms ease-out">
+  <div style="height:54px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 42px;font:600 16px system-ui"><span>9:41</span><div style="display:flex;gap:6px;align-items:center"><div style="width:17px;height:11px;border-radius:2px;background:var(--text)"></div><div style="width:25px;height:12px;border-radius:4px;border:1.5px solid var(--muted)"></div></div></div>
+  <div style="flex:1;min-height:0;position:relative;display:flex;flex-direction:column">
+
+  <sc-if value="{{ sToday }}" hint-placeholder-val="{{ true }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:16px;padding:12px 20px 20px;animation:wmIn 220ms ease-out">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:4px"><div style="font:400 14px/20px Inter;color:var(--muted)">Thursday, 30 October</div><div style="font:600 22px/28px Inter">Good morning, Linh</div></div>
+      <div style="display:flex;align-items:center;gap:6px;height:36px;padding:0 12px 0 10px;border-radius:999px;background:var(--surface);box-shadow:var(--shadow);border:1px solid var(--line);font:600 15px Inter;font-variant-numeric:tabular-nums" title="{{ streakTitle }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="{{ flameFill }}" stroke="#F08A24" stroke-width="1.6"><path d="M12 2.5c1.2 3.2 6 5.6 6 11a6 6 0 0 1-12 0c0-2.6 1.3-4.4 2.6-5.6 0 2.3 1 3.6 2.4 3.6 0-3.4-1.3-5.6 1-9z"></path></svg>{{ streak }}</div>
+    </div>
+    <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:18px 18px 16px;display:flex;flex-direction:column;gap:14px;cursor:pointer" sc-camel-on-click="{{ goMap }}">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="display:flex;align-items:baseline;gap:8px"><span style="font:600 34px/38px 'Source Serif 4',Georgia,serif">{{ pct }}%</span><span style="font:400 14px/20px Inter;color:var(--muted)">of NGSL known</span></div><span style="font:500 14px Inter;color:var(--muted);font-variant-numeric:tabular-nums">{{ knownFmt }} / 2,809</span></div>
+      <div style="display:flex;gap:2px;height:10px;border-radius:999px;overflow:hidden"><div style="width:{{ barM }};background:var(--mas);transition:width 350ms ease-out"></div><div style="width:{{ barK }};background:var(--kno);transition:width 350ms ease-out"></div><div style="width:{{ barL }};background:var(--lrn);transition:width 350ms ease-out"></div><div style="flex:1;background:var(--unk)"></div></div>
+      <div style="display:flex;gap:14px;font:400 13px Inter;color:var(--muted);font-variant-numeric:tabular-nums"><span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:var(--masin);box-shadow:inset 0 0 0 2px var(--mas)"></span>{{ cM }} mastered</span><span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:var(--kno)"></span>{{ cK }} known</span><span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:radial-gradient(circle,var(--dot) 1.6px,var(--lrn) 2.2px)"></span>{{ cL }} learning</span></div>
+    </div>
+    <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:10px;padding:4px 0">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 15px Inter">Next new words</span><span style="font:500 14px Inter;color:var(--brand);cursor:pointer" sc-camel-on-click="{{ goMap }}">See map</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ nextChips }}" as="c" hint-placeholder-count="5"><span style="height:34px;display:flex;align-items:center;padding:0 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font:400 15px 'Source Serif 4',serif;cursor:pointer" sc-camel-on-click="{{ c.open }}">{{ c.w }}</span></sc-for>
+      </div>
+    </div>
+    </sc-if>
+    <div style="flex:1"></div>
+    <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+    <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:20px 18px 18px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Today</span><span style="font:600 22px/28px Inter">{{ dueLine }}</span></div>
+        <span style="font:500 14px Inter;color:var(--muted);padding-top:2px">~4 min</span>
+      </div>
+      <div style="height:56px;border-radius:12px;background:var(--brand);color:var(--onbrand);display:flex;align-items:center;justify-content:center;font:600 17px Inter;cursor:pointer;user-select:none;transition:transform 120ms ease-out" style-active="transform:scale(.98)" sc-camel-on-click="{{ start }}">Start</div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+    <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:20px 18px 18px;display:flex;flex-direction:column;gap:16px;animation:wmUp 300ms ease-out">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:40px;height:40px;border-radius:999px;background:var(--brandsoft);color:var(--brand);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>
+        <div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 20px/26px Inter">You're done for today</span><span style="font:400 14px Inter;color:var(--muted)">Next reviews tomorrow morning</span></div>
+      </div>
+      <sc-if value="{{ canMore }}" hint-placeholder-val="{{ true }}"><div style="height:56px;border-radius:12px;border:1px solid var(--border);color:var(--brand);display:flex;align-items:center;justify-content:center;font:600 17px Inter;cursor:pointer;user-select:none" style-active="transform:scale(.98)" sc-camel-on-click="{{ learnMore }}">Learn 5 more</div></sc-if>
+    </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ sMap }}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;animation:wmIn 220ms ease-out">
+    <div style="flex:none;padding:8px 20px 14px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="display:flex;align-items:center;gap:4px;height:32px;font:600 15px Inter">General English<svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg><span style="font:400 14px Inter;color:var(--muted);margin-left:4px">2,809 words</span></div>
+        <div style="display:flex;padding:3px;border-radius:10px;background:var(--tint);font:500 13px Inter;cursor:pointer">
+          <span style="padding:5px 10px;border-radius:7px;background:{{ mmC.bg }};box-shadow:{{ mmC.sh }};color:{{ mmC.c }};transition:all 200ms ease-out" sc-camel-on-click="{{ setCompact }}">Compact</span>
+          <span style="padding:5px 10px;border-radius:7px;background:{{ mmB.bg }};box-shadow:{{ mmB.sh }};color:{{ mmB.c }};transition:all 200ms ease-out" sc-camel-on-click="{{ setBands }}">Bands</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:8px"><span style="font:600 30px/36px 'Source Serif 4',Georgia,serif;font-variant-numeric:tabular-nums">{{ knownFmt }} known</span><span style="font:400 17px Inter;color:var(--muted)">{{ pct }}%</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px 14px;font:400 13px Inter;color:var(--muted);font-variant-numeric:tabular-nums">
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:11px;height:11px;border-radius:3px;background:var(--masin);box-shadow:inset 0 0 0 2px var(--mas)"></span>Mastered {{ cM }}</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:11px;height:11px;border-radius:3px;background:var(--kno)"></span>Known {{ cK }}</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:11px;height:11px;border-radius:3px;background:radial-gradient(circle,var(--dot) 1.8px,var(--lrn) 2.4px)"></span>Learning {{ cL }}</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:11px;height:11px;border-radius:3px;background:var(--unk)"></span>Unknown {{ cU }}</span>
+      </div>
+    </div>
+    <sc-if value="{{ isBands }}" hint-placeholder-val="{{ true }}">
+    <div ref="{{ mapRef }}" style="flex:1;min-height:0;overflow-y:auto;padding:16px 20px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start;position:relative">
+      <sc-for list="{{ bands }}" as="b" hint-placeholder-count="6">
+        <div data-here="{{ b.hereAttr }}" style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:10px;cursor:pointer;transition:transform 150ms ease-out" style-active="transform:scale(.97)" sc-camel-on-click="{{ b.open }}">
+          <div style="display:flex;justify-content:space-between;align-items:center;height:20px">
+            <span style="font:600 13px Inter;font-variant-numeric:tabular-nums">{{ b.label }}</span>
+            <sc-if value="{{ b.here }}" hint-placeholder-val="{{ false }}"><span style="font:600 11px Inter;color:var(--onbrand);background:var(--brand);padding:3px 7px;border-radius:999px">You are here</span></sc-if>
+            <sc-if value="{{ b.notHere }}" hint-placeholder-val="{{ true }}"><span style="font:500 12px Inter;color:var(--muted);font-variant-numeric:tabular-nums">{{ b.pct }}%</span></sc-if>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(10,12px);gap:2.5px;justify-content:center">
+            <sc-for list="{{ b.tiles }}" as="t" hint-placeholder-count="100"><div style="width:12px;height:12px;border-radius:3px;background:{{ t.bg }};box-shadow:{{ t.sh }};animation:{{ t.an }}"></div></sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    </sc-if>
+    <sc-if value="{{ isCompact }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;min-height:0;overflow-y:auto;padding:16px 20px">
+      <div style="display:grid;grid-template-columns:repeat(5,59px);justify-content:space-between;row-gap:10px">
+        <sc-for list="{{ bands }}" as="b" hint-placeholder-count="29">
+          <div style="display:flex;flex-direction:column;gap:4px;cursor:pointer" sc-camel-on-click="{{ b.open }}">
+            <span style="font:600 10px/12px 'IBM Plex Mono',monospace;color:var(--muted)">{{ b.start }}</span>
+            <div style="display:grid;grid-template-columns:repeat(10,5px);gap:1px">
+              <sc-for list="{{ b.tiles }}" as="t" hint-placeholder-count="100"><div style="width:5px;height:5px;border-radius:1px;background:{{ t.bgS }};box-shadow:{{ t.shS }};animation:{{ t.an }}"></div></sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font:400 13px/18px Inter;color:var(--muted);margin-top:16px;text-align:center">Tap a band to see its 100 words</div>
+    </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ sSearch }}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;animation:wmIn 220ms ease-out">
+    <div style="padding:8px 20px 12px;display:flex;flex-direction:column;gap:14px">
+      <span style="font:600 22px/28px Inter">Search</span>
+      <div style="height:48px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--muted)">
+        <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg>
+        <input ref="{{ searchRef }}" value="{{ query }}" sc-camel-on-change="{{ onQuery }}" placeholder="Find a word" style="flex:1;border:0;outline:0;background:transparent;font:400 17px Inter;color:var(--text);min-width:0">
+        <sc-if value="{{ hasQuery }}" hint-placeholder-val="{{ false }}"><span style="font:500 14px Inter;color:var(--brand);cursor:pointer" sc-camel-on-click="{{ clearQuery }}">Clear</span></sc-if>
+      </div>
+    </div>
+    <div style="flex:1;min-height:0;overflow-y:auto;padding:0 20px">
+      <sc-if value="{{ showRecent }}" hint-placeholder-val="{{ true }}">
+        <div style="font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px 0">Recent</div>
+        <sc-for list="{{ recent }}" as="r" hint-placeholder-count="3"><div style="height:48px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);cursor:pointer;font:400 17px Inter" sc-camel-on-click="{{ r.go }}"><svg style="color:var(--muted)" width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4l3 2"></path></svg>{{ r.q }}</div></sc-for>
+      </sc-if>
+      <sc-for list="{{ results }}" as="r" hint-placeholder-count="0">
+        <div style="min-height:60px;display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:8px;border-bottom:1px solid var(--border);cursor:pointer" sc-camel-on-click="{{ r.open }}">
+          <span style="font:500 13px Inter;color:var(--muted);font-variant-numeric:tabular-nums">#{{ r.rankFmt }}</span>
+          <span style="font:600 18px 'Source Serif 4',serif">{{ r.w }}</span>
+          <span style="height:26px;display:flex;align-items:center;gap:6px;padding:0 10px 0 8px;border-radius:999px;background:{{ r.chip.bg }};font:500 13px Inter"><span style="width:8px;height:8px;border-radius:999px;background:{{ r.chip.dot }};box-shadow:{{ r.chip.ring }}"></span>{{ r.chip.label }}</span>
+        </div>
+      </sc-for>
+      <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:64px 20px;text-align:center"><svg style="color:var(--muted)" width="28" height="28" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg><span style="font:400 17px/26px Inter">Not in this word list yet.</span><span style="font:400 14px Inter;color:var(--muted)">Try a different spelling.</span></div>
+      </sc-if>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ sProgress }}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:16px;padding:8px 20px 24px;animation:wmIn 220ms ease-out">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:600 22px/28px Inter">Progress</span><div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:var(--muted);cursor:pointer;margin-right:-10px" sc-camel-on-click="{{ openSettings }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"></path></svg></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:4px"><span style="font:400 13px Inter;color:var(--muted)">Current streak</span><span style="font:600 28px/34px 'Source Serif 4',serif">{{ streak }} days</span></div>
+      <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:4px"><span style="font:400 13px Inter;color:var(--muted)">Best streak</span><span style="font:600 28px/34px 'Source Serif 4',serif">31 days</span></div>
+    </div>
+    <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 15px Inter">Words known</span><span style="font:400 13px Inter;color:var(--muted)">Last 30 days · <span style="color:var(--good);font-weight:600">+186</span></span></div>
+      <svg width="100%" height="110" sc-camel-view-box="0 0 300 110" sc-camel-preserve-aspect-ratio="none"><polyline points="{{ linePts }}" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline></svg>
+      <div style="display:flex;justify-content:space-between;font:400 12px Inter;color:var(--muted)"><span>1 Oct</span><span>30 Oct</span></div>
+    </div>
+    <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 15px Inter">Reviews per day</span><span style="font:400 13px Inter;color:var(--muted)">Due tomorrow: 9</span></div>
+      <div style="height:80px;display:flex;align-items:flex-end;gap:4px"><sc-for list="{{ revBars }}" as="v" hint-placeholder-count="14"><div style="flex:1;height:{{ v.h }};border-radius:3px;background:{{ v.c }}"></div></sc-for></div>
+    </div>
+    <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:4px 16px">
+      <div style="height:48px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)"><span style="width:12px;height:12px;border-radius:3px;background:var(--masin);box-shadow:inset 0 0 0 2px var(--mas)"></span><span style="flex:1;font:400 16px Inter">Mastered</span><span style="font:600 16px Inter;font-variant-numeric:tabular-nums">{{ cM }}</span></div>
+      <div style="height:48px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)"><span style="width:12px;height:12px;border-radius:3px;background:var(--kno)"></span><span style="flex:1;font:400 16px Inter">Known</span><span style="font:600 16px Inter;font-variant-numeric:tabular-nums">{{ cK }}</span></div>
+      <div style="height:48px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)"><span style="width:12px;height:12px;border-radius:3px;background:radial-gradient(circle,var(--dot) 1.8px,var(--lrn) 2.4px)"></span><span style="flex:1;font:400 16px Inter">Learning</span><span style="font:600 16px Inter;font-variant-numeric:tabular-nums">{{ cL }}</span></div>
+      <div style="height:48px;display:flex;align-items:center;gap:10px"><span style="width:12px;height:12px;border-radius:3px;background:var(--unk)"></span><span style="flex:1;font:400 16px Inter">Unknown</span><span style="font:600 16px Inter;font-variant-numeric:tabular-nums">{{ cU }}</span></div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ vSession }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;animation:wmUp 260ms ease-out;z-index:5">
+    <div style="height:52px;flex:none;display:flex;align-items:center;gap:12px;padding:0 20px 0 10px">
+      <div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:var(--muted);cursor:pointer" sc-camel-on-click="{{ closeSession }}"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></div>
+      <div style="flex:1;height:6px;border-radius:999px;background:var(--unk);overflow:hidden"><div style="width:{{ sesPct }};height:100%;background:var(--brand);border-radius:999px;transition:width 300ms ease-out"></div></div>
+      <span style="font:500 14px Inter;color:var(--muted);font-variant-numeric:tabular-nums;min-width:44px;text-align:right">{{ sesLabel }}</span>
+    </div>
+
+    <sc-if value="{{ isReview }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:1;min-height:0;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px">
+      <div style="flex:1;min-height:0;perspective:1400px;cursor:pointer" sc-camel-on-click="{{ reveal }}">
+        <div style="position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:{{ flipTr }};transform:{{ flipT }}">
+          <div style="position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px">
+            <span style="position:absolute;top:16px;left:16px;font:500 13px Inter;color:var(--muted)">Review</span>
+            <span style="position:absolute;top:16px;right:16px;font:500 13px Inter;color:var(--muted);font-variant-numeric:tabular-nums">#{{ cur.rankFmt }}</span>
+            <sc-if value="{{ frontWord }}" hint-placeholder-val="{{ true }}"><span style="font:600 48px/56px 'Source Serif 4',Georgia,serif;letter-spacing:-.01em">{{ cur.w }}</span></sc-if>
+            <sc-if value="{{ frontCloze }}" hint-placeholder-val="{{ false }}"><span style="font:400 26px/38px 'Source Serif 4',Georgia,serif;text-align:center;text-wrap:pretty">{{ cur.cz.a }}<span style="display:inline-block;width:92px;height:28px;vertical-align:-5px;border-bottom:2.5px solid var(--brand)"></span>{{ cur.cz.c }}</span><span style="font:400 14px Inter;color:var(--muted)">{{ cur.pos }} · {{ cur.len }} letters</span></sc-if>
+            <span style="font:400 14px/20px Inter;color:var(--muted)">Tap anywhere to reveal</span>
+          </div>
+          <div style="position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg);background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:22px 20px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;cursor:default">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start">
+              <div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 40px/48px 'Source Serif 4',Georgia,serif;letter-spacing:-.01em">{{ cur.w }}</span><span style="font:400 14px/20px Inter;color:var(--muted)">{{ cur.ipa }}</span></div>
+              <div style="width:44px;height:44px;border-radius:999px;background:var(--brandsoft);color:var(--brand);display:flex;align-items:center;justify-content:center;cursor:pointer" sc-camel-on-click="{{ cur.say }}"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="M16.5 9a4 4 0 0 1 0 6"></path></svg></div>
+            </div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <span style="height:26px;display:flex;align-items:center;padding:0 10px;border-radius:999px;border:1px solid var(--border);font:500 13px Inter;color:var(--muted)">{{ cur.pos }}</span>
+              <span style="height:26px;display:flex;align-items:center;padding:0 10px;border-radius:999px;border:1px solid var(--border);font:500 13px Inter;color:var(--muted);font-variant-numeric:tabular-nums">#{{ cur.rankFmt }}</span>
+              <span style="height:26px;display:flex;align-items:center;gap:6px;padding:0 10px 0 8px;border-radius:999px;background:{{ cur.chip.bg }};font:500 13px Inter"><span style="width:8px;height:8px;border-radius:999px;background:{{ cur.chip.dot }};box-shadow:{{ cur.chip.ring }}"></span>{{ cur.chip.label }}</span>
+            </div>
+            <div style="font:400 17px/26px Inter;text-wrap:pretty">{{ cur.def }}</div>
+            <div style="height:1px;background:var(--border);flex:none"></div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <sc-for list="{{ cur.exs }}" as="e" hint-placeholder-count="3"><div style="display:flex;gap:10px;align-items:flex-start"><span style="flex:1;font:400 17px/26px 'Source Serif 4',serif;text-wrap:pretty">{{ e.a }}<span style="color:var(--brand);font-weight:600">{{ e.b }}</span>{{ e.c }}</span><div style="flex:none;width:32px;height:32px;margin:-3px -6px 0 0;display:flex;align-items:center;justify-content:center;color:{{ e.col }};cursor:pointer" sc-camel-on-click="{{ e.say }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="M16.5 9a4 4 0 0 1 0 6"></path></svg></div></div></sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+      <sc-if value="{{ showAnswerBtn }}" hint-placeholder-val="{{ true }}"><div style="height:64px;border-radius:12px;background:var(--brand);color:var(--onbrand);display:flex;align-items:center;justify-content:center;font:600 17px Inter;cursor:pointer;user-select:none;flex:none" style-active="transform:scale(.98)" sc-camel-on-click="{{ reveal }}">Show answer</div></sc-if>
+      <sc-if value="{{ showGrades }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;flex:none;animation:wmIn 200ms ease-out">
+        <sc-for list="{{ grades }}" as="g" hint-placeholder-count="4"><div style="height:64px;border-radius:12px;background:{{ g.bg }};border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;position:relative;overflow:hidden;cursor:pointer;user-select:none;transition:transform 100ms ease-out" style-active="transform:scale(.95)" sc-camel-on-click="{{ g.go }}"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:{{ g.c }}"></span><span style="font:600 16px Inter">{{ g.label }}</span><span style="font:500 12px Inter;color:var(--muted)">{{ g.iv }}</span></div></sc-for>
+      </div>
+      </sc-if>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isNewCard }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;min-height:0;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px;animation:wmIn 250ms ease-out">
+      <div style="flex:1;min-height:0;overflow-y:auto;background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:22px 20px;display:flex;flex-direction:column;gap:14px">
+        <span style="align-self:flex-start;font:600 11px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--brandsoft);padding:4px 8px;border-radius:999px">New word</span>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 40px/48px 'Source Serif 4',Georgia,serif;letter-spacing:-.01em">{{ cur.w }}</span><span style="font:400 14px/20px Inter;color:var(--muted)">{{ cur.ipa }}</span></div>
+          <div style="width:44px;height:44px;border-radius:999px;background:var(--brandsoft);color:var(--brand);display:flex;align-items:center;justify-content:center;cursor:pointer" sc-camel-on-click="{{ cur.say }}"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="M16.5 9a4 4 0 0 1 0 6"></path></svg></div>
+        </div>
+        <div style="display:flex;gap:6px"><span style="height:26px;display:flex;align-items:center;padding:0 10px;border-radius:999px;border:1px solid var(--border);font:500 13px Inter;color:var(--muted)">{{ cur.pos }}</span><span style="height:26px;display:flex;align-items:center;padding:0 10px;border-radius:999px;border:1px solid var(--border);font:500 13px Inter;color:var(--muted);font-variant-numeric:tabular-nums">#{{ cur.rankFmt }}</span></div>
+        <div style="font:400 17px/26px Inter;text-wrap:pretty">{{ cur.def }}</div>
+        <div style="height:1px;background:var(--border);flex:none"></div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ cur.exs }}" as="e" hint-placeholder-count="2"><div style="display:flex;gap:10px;align-items:flex-start"><span style="flex:1;font:400 17px/26px 'Source Serif 4',serif;text-wrap:pretty">{{ e.a }}<span style="color:var(--brand);font-weight:600">{{ e.b }}</span>{{ e.c }}</span><div style="flex:none;width:32px;height:32px;margin:-3px -6px 0 0;display:flex;align-items:center;justify-content:center;color:{{ e.col }};cursor:pointer" sc-camel-on-click="{{ e.say }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="M16.5 9a4 4 0 0 1 0 6"></path></svg></div></div></sc-for>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:none">
+        <div style="height:56px;border-radius:12px;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;font:600 16px Inter;cursor:pointer;user-select:none" style-active="transform:scale(.97)" sc-camel-on-click="{{ knowIt }}">I already know it</div>
+        <div style="height:56px;border-radius:12px;background:var(--brand);color:var(--onbrand);display:flex;align-items:center;justify-content:center;font:600 16px Inter;cursor:pointer;user-select:none" style-active="transform:scale(.97)" sc-camel-on-click="{{ learnIt }}">Learn it</div>
+      </div>
+    </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ vSummary }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;padding:12px 20px 20px;gap:20px;z-index:5;animation:wmIn 300ms ease-out;overflow:hidden">
+    <sc-for list="{{ confetti }}" as="p" hint-placeholder-count="0"><span style="position:absolute;top:{{ p.y }};left:{{ p.x }};width:{{ p.s }};height:{{ p.s }};border-radius:2px;background:{{ p.c }};transform:rotate({{ p.r }});animation:wmUp 600ms {{ p.d }} ease-out both;opacity:.85;pointer-events:none"></span></sc-for>
+    <div style="display:flex;flex-direction:column;gap:6px;padding-top:56px;position:relative">
+      <span style="font:600 12px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Session complete</span>
+      <span style="font:600 34px/40px 'Source Serif 4',Georgia,serif">Nice work, Linh.</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative">
+      <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:2px"><span style="font:600 30px/36px 'Source Serif 4',serif">{{ sum.newN }}</span><span style="font:400 14px Inter;color:var(--muted)">new words</span></div>
+      <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:2px"><span style="font:600 30px/36px 'Source Serif 4',serif">{{ sum.revN }}</span><span style="font:400 14px Inter;color:var(--muted)">reviews done</span></div>
+      <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:2px"><span style="font:600 30px/36px 'Source Serif 4',serif">{{ sum.acc }}</span><span style="font:400 14px Inter;color:var(--muted)">accuracy</span></div>
+      <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:2px"><span style="font:600 30px/36px 'Source Serif 4',serif;display:flex;align-items:center;gap:6px"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="#F08A24"><path d="M12 2.5c1.2 3.2 6 5.6 6 11a6 6 0 0 1-12 0c0-2.6 1.3-4.4 2.6-5.6 0 2.3 1 3.6 2.4 3.6 0-3.4-1.3-5.6 1-9z"></path></svg>{{ streak }}</span><span style="font:400 14px Inter;color:var(--muted)">{{ sum.streakNote }}</span></div>
+    </div>
+    <sc-if value="{{ sum.hasWords }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:10px;position:relative">
+      <span style="font:600 15px Inter">Today's new words</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ sum.words }}" as="c" hint-placeholder-count="3"><span style="height:34px;display:flex;align-items:center;gap:7px;padding:0 14px 0 11px;border-radius:999px;background:{{ c.chip.bg }};font:400 16px 'Source Serif 4',serif;cursor:pointer" sc-camel-on-click="{{ c.open }}"><span style="width:8px;height:8px;border-radius:999px;background:{{ c.chip.dot }};box-shadow:{{ c.chip.ring }}"></span>{{ c.w }}</span></sc-for></div>
+    </div>
+    </sc-if>
+    <div style="flex:1"></div>
+    <div style="display:flex;flex-direction:column;gap:10px;position:relative">
+      <div style="height:56px;border-radius:12px;background:var(--brand);color:var(--onbrand);display:flex;align-items:center;justify-content:center;font:600 17px Inter;cursor:pointer;user-select:none" style-active="transform:scale(.98)" sc-camel-on-click="{{ seeMap }}">See my map</div>
+      <div style="height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font:600 17px Inter;color:var(--brand);cursor:pointer" sc-camel-on-click="{{ doneSummary }}">Done</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ vBand }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;z-index:4;animation:wmIn 220ms ease-out">
+    <div style="flex:none;padding:0 20px 12px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--border)">
+      <div style="height:44px;display:flex;align-items:center;gap:2px;margin-left:-10px;color:var(--brand);font:500 16px Inter;cursor:pointer;width:max-content" sc-camel-on-click="{{ back }}"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"></path></svg>Map</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 26px/32px 'Source Serif 4',serif">Words {{ band.label }}</span><span style="font:500 14px Inter;color:var(--muted)">{{ band.pct }}% known</span></div>
+      <div style="display:flex;gap:2px;height:8px;border-radius:999px;overflow:hidden"><div style="width:{{ band.wM }};background:var(--mas)"></div><div style="width:{{ band.wK }};background:var(--kno)"></div><div style="width:{{ band.wL }};background:var(--lrn)"></div><div style="flex:1;background:var(--unk)"></div></div>
+      <div style="display:flex;gap:8px"><sc-for list="{{ filters }}" as="f" hint-placeholder-count="4"><span style="height:34px;display:flex;align-items:center;padding:0 14px;border-radius:999px;background:{{ f.bg }};color:{{ f.c }};border:1px solid {{ f.bd }};font:500 14px Inter;cursor:pointer;transition:all 150ms ease-out" sc-camel-on-click="{{ f.go }}">{{ f.label }}</span></sc-for></div>
+    </div>
+    <div style="flex:1;min-height:0;overflow-y:auto;padding:0 20px">
+      <sc-for list="{{ bandRows }}" as="r" hint-placeholder-count="10">
+        <div style="min-height:60px;display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:8px;border-bottom:1px solid var(--border);cursor:pointer;padding:8px 0" sc-camel-on-click="{{ r.open }}">
+          <span style="font:500 13px Inter;color:var(--muted);font-variant-numeric:tabular-nums">{{ r.rankFmt }}</span>
+          <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font:600 17px 'Source Serif 4',serif">{{ r.w }}</span><span style="font:400 13px/18px Inter;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.short }}</span></div>
+          <span style="height:26px;display:flex;align-items:center;gap:6px;padding:0 10px 0 8px;border-radius:999px;background:{{ r.chip.bg }};font:500 13px Inter"><span style="width:8px;height:8px;border-radius:999px;background:{{ r.chip.dot }};box-shadow:{{ r.chip.ring }}"></span>{{ r.chip.label }}</span>
+        </div>
+      </sc-for>
+      <sc-if value="{{ bandEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:56px 0;text-align:center;font:400 16px Inter;color:var(--muted)">No words with this status in this band.</div></sc-if>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ vWord }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;z-index:6;animation:wmIn 220ms ease-out">
+    <div style="flex:none;padding:0 20px;height:44px;display:flex;align-items:center"><div style="display:flex;align-items:center;gap:2px;margin-left:-10px;color:var(--brand);font:500 16px Inter;cursor:pointer" sc-camel-on-click="{{ back }}"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"></path></svg>{{ backLabel }}</div></div>
+    <div style="flex:1;min-height:0;overflow-y:auto;padding:12px 20px 16px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 40px/48px 'Source Serif 4',Georgia,serif;letter-spacing:-.01em">{{ wd.w }}</span><span style="font:400 14px/20px Inter;color:var(--muted)">{{ wd.ipa }}</span></div>
+        <div style="width:44px;height:44px;border-radius:999px;background:var(--brandsoft);color:var(--brand);display:flex;align-items:center;justify-content:center;cursor:pointer" sc-camel-on-click="{{ wd.say }}"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="M16.5 9a4 4 0 0 1 0 6"></path></svg></div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span style="height:26px;display:flex;align-items:center;padding:0 10px;border-radius:999px;border:1px solid var(--border);font:500 13px Inter;color:var(--muted)">{{ wd.pos }}</span>
+        <span style="height:26px;display:flex;align-items:center;padding:0 10px;border-radius:999px;border:1px solid var(--border);font:500 13px Inter;color:var(--muted);font-variant-numeric:tabular-nums">#{{ wd.rankFmt }}</span>
+        <span style="height:26px;display:flex;align-items:center;gap:6px;padding:0 10px 0 8px;border-radius:999px;background:{{ wd.chip.bg }};font:500 13px Inter"><span style="width:8px;height:8px;border-radius:999px;background:{{ wd.chip.dot }};box-shadow:{{ wd.chip.ring }}"></span>{{ wd.chip.label }}</span>
+      </div>
+      <div style="font:400 17px/26px Inter;text-wrap:pretty">{{ wd.def }}</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ wd.exs }}" as="e" hint-placeholder-count="2"><div style="display:flex;gap:10px;align-items:flex-start"><span style="flex:1;font:400 17px/26px 'Source Serif 4',serif;text-wrap:pretty">{{ e.a }}<span style="color:var(--brand);font-weight:600">{{ e.b }}</span>{{ e.c }}</span><div style="flex:none;width:32px;height:32px;margin:-3px -6px 0 0;display:flex;align-items:center;justify-content:center;color:{{ e.col }};cursor:pointer" sc-camel-on-click="{{ e.say }}"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"></path><path d="M16.5 9a4 4 0 0 1 0 6"></path></svg></div></div></sc-for>
+      </div>
+      <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:4px 16px">
+        <div style="height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)"><span style="font:400 15px Inter;color:var(--muted)">Next review</span><span style="font:500 15px Inter">{{ wd.next }}</span></div>
+        <div style="height:48px;display:flex;align-items:center;justify-content:space-between"><span style="font:400 15px Inter;color:var(--muted)">History</span><div style="display:flex;gap:5px"><sc-for list="{{ wd.hist }}" as="h" hint-placeholder-count="0"><span style="width:10px;height:10px;border-radius:999px;background:{{ h }}"></span></sc-for><sc-if value="{{ wd.noHist }}" hint-placeholder-val="{{ false }}"><span style="font:500 15px Inter">No reviews yet</span></sc-if></div></div>
+      </div>
+    </div>
+    <div style="flex:none;padding:0 20px 20px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="height:52px;border-radius:12px;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;font:600 15px Inter;cursor:pointer" style-active="transform:scale(.97)" sc-camel-on-click="{{ wdKnown }}">Mark as known</div>
+        <div style="height:52px;border-radius:12px;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;font:600 15px Inter;color:var(--again);cursor:pointer" style-active="transform:scale(.97)" sc-camel-on-click="{{ wdReset }}">Reset</div>
+      </div>
+      <div style="height:56px;border-radius:12px;background:var(--brand);color:var(--onbrand);display:flex;align-items:center;justify-content:center;font:600 17px Inter;cursor:pointer" style-active="transform:scale(.98)" sc-camel-on-click="{{ wdLearn }}">{{ wd.learnLabel }}</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ vSettings }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;z-index:4;animation:wmIn 220ms ease-out">
+    <div style="flex:none;padding:0 20px;height:44px;display:flex;align-items:center"><div style="display:flex;align-items:center;gap:2px;margin-left:-10px;color:var(--brand);font:500 16px Inter;cursor:pointer" sc-camel-on-click="{{ back }}"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"></path></svg>Progress</div></div>
+    <div style="flex:1;overflow-y:auto;padding:8px 20px 20px;display:flex;flex-direction:column;gap:16px">
+      <span style="font:600 22px/28px Inter">Settings</span>
+      <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:4px 16px">
+        <div style="height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)"><span style="font:400 16px Inter">New words per day</span><div style="display:flex;align-items:center;gap:4px"><span style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;font:500 22px Inter;color:var(--brand);cursor:pointer" sc-camel-on-click="{{ decN }}">−</span><span style="width:28px;text-align:center;font:600 17px Inter;font-variant-numeric:tabular-nums">{{ dailyN }}</span><span style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;font:500 22px Inter;color:var(--brand);cursor:pointer" sc-camel-on-click="{{ incN }}">+</span></div></div>
+        <div style="height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)"><span style="font:400 16px Inter">Theme</span><div style="display:flex;padding:3px;border-radius:10px;background:var(--tint);font:500 13px Inter"><sc-for list="{{ themeOpts }}" as="o" hint-placeholder-count="3"><span style="padding:6px 10px;border-radius:7px;background:{{ o.bg }};box-shadow:{{ o.sh }};color:{{ o.c }};cursor:pointer" sc-camel-on-click="{{ o.go }}">{{ o.label }}</span></sc-for></div></div>
+        <div style="height:60px;display:flex;align-items:center;justify-content:space-between"><span style="font:400 16px Inter">Voice</span><div style="display:flex;padding:3px;border-radius:10px;background:var(--tint);font:500 13px Inter"><sc-for list="{{ voiceOpts }}" as="o" hint-placeholder-count="2"><span style="padding:6px 12px;border-radius:7px;background:{{ o.bg }};box-shadow:{{ o.sh }};color:{{ o.c }};cursor:pointer" sc-camel-on-click="{{ o.go }}">{{ o.label }}</span></sc-for></div></div>
+      </div>
+      <div style="background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:4px 16px">
+        <div style="height:56px;display:flex;align-items:center;border-bottom:1px solid var(--border);font:400 16px Inter;color:var(--brand)">Retake placement test</div>
+        <div style="height:56px;display:flex;align-items:center;font:400 16px Inter;color:var(--again);cursor:pointer" sc-camel-on-click="{{ resetAll }}">Reset progress</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  </div>
+  <sc-if value="{{ showTabs }}" hint-placeholder-val="{{ true }}">
+  <div style="flex:none;height:84px;border-top:1px solid var(--border);background:var(--surface);display:flex;padding:8px 12px 0">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:{{ tc.today }};font:600 11px Inter;cursor:pointer;transition:color 200ms" sc-camel-on-click="{{ goToday }}"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="3"></rect><path d="M4 10h16M9 3v4M15 3v4"></path></svg>Today</div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:{{ tc.map }};font:600 11px Inter;cursor:pointer;transition:color 200ms" sc-camel-on-click="{{ goMap }}"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="7" height="7" rx="1.5"></rect><rect x="13" y="4" width="7" height="7" rx="1.5"></rect><rect x="4" y="13" width="7" height="7" rx="1.5"></rect><rect x="13" y="13" width="7" height="7" rx="1.5"></rect></svg>Map</div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:{{ tc.search }};font:600 11px Inter;cursor:pointer;transition:color 200ms" sc-camel-on-click="{{ goSearch }}"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg>Search</div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:{{ tc.progress }};font:600 11px Inter;cursor:pointer;transition:color 200ms" sc-camel-on-click="{{ goProgress }}"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20v-7M12 20V5M19 20v-10"></path></svg>Progress</div>
+  </div>
+  </sc-if>
+  <sc-if value="{{ noTabs }}" hint-placeholder-val="{{ false }}"><div style="height:18px;flex:none"></div></sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;,&quot;system&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light'|'dark'|'system'&quot;},&quot;reviewFront&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;word&quot;,&quot;cloze&quot;],&quot;default&quot;:&quot;word&quot;,&quot;tsType&quot;:&quot;'word'|'cloze'&quot;},&quot;mapView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bands&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;bands&quot;,&quot;tsType&quot;:&quot;'bands'|'compact'&quot;},&quot;reducedMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const WD = {
+  412:{w:'decide',ipa:'/dɪˈsaɪd/',pos:'verb',def:'To choose what to do after thinking about the options.',ex:[['We ','decided',' to stay home because of the rain.'],["I can't ",'decide',' which one to buy.'],['She ','decided',' against taking the job.']],hist:['good','hard','good','again','good']},
+  588:{w:'effort',ipa:'/ˈefət/',pos:'noun',def:'The physical or mental energy needed to do something.',ex:[['It takes a lot of ','effort',' to learn a language.'],['Thanks for making the ','effort',' to come.']],hist:['hard','good','good']},
+  301:{w:'likely',ipa:'/ˈlaɪkli/',pos:'adjective',def:'Probably going to happen or be true.',ex:[["It's ",'likely',' to rain this afternoon.'],['The most ','likely',' answer is the simplest one.']],hist:['good','easy','good','good']},
+  702:{w:'achieve',ipa:'/əˈtʃiːv/',pos:'verb',def:'To succeed in doing something, usually after a lot of work.',ex:[['She ','achieved',' her goal of running a marathon.'],['What do you hope to ','achieve','?']],hist:['again','hard','good']},
+  233:{w:'support',ipa:'/səˈpɔːt/',pos:'verb',def:'To help someone, or to agree with an idea or group.',ex:[['My family always ','supported',' my decisions.'],['Which team do you ','support','?']],hist:['good','good','easy']},
+  1241:{w:'attach',ipa:'/əˈtætʃ/',pos:'verb',def:'To fix or join one thing to another.',ex:[['Please ','attach',' the file to your email.'],['A note was ','attached',' to the door.']]},
+  1243:{w:'rural',ipa:'/ˈrʊərəl/',pos:'adjective',def:'Connected with the countryside, not towns or cities.',ex:[['They live in a ','rural',' area far from the city.'],['Life in ','rural',' Vietnam is quieter.']]},
+  1246:{w:'pursue',ipa:'/pəˈsjuː/',pos:'verb',def:'To try to achieve something over a long period of time.',ex:[['He left his job to ','pursue',' a career in music.'],['The police ','pursued',' the car for miles.']]},
+  1249:{w:'ignore',ipa:'/ɪɡˈnɔː/',pos:'verb',def:'To pay no attention to something or someone.',ex:[['She ','ignored',' my advice.'],['Just ','ignore',' the noise outside.']]},
+  1252:{w:'venue',ipa:'/ˈvenjuː/',pos:'noun',def:'The place where an event happens.',ex:[['The ','venue',' holds 2,000 people.'],["We're still looking for a wedding ",'venue','.']]},
+  1255:{w:'modest',ipa:'/ˈmɒdɪst/',pos:'adjective',def:'Not very large; or not talking much about your own success.',ex:[['They live in a ','modest',' house.'],['He is very ','modest',' about his work.']]},
+  1258:{w:'crucial',ipa:'/ˈkruːʃl/',pos:'adjective',def:'Extremely important.',ex:[['Sleep is ','crucial',' for memory.'],['This is a ','crucial',' moment for the team.']]},
+  1262:{w:'gather',ipa:'/ˈɡæðə/',pos:'verb',def:'To come together in one place, or to collect things.',ex:[['A crowd ','gathered',' outside the station.'],['We ','gathered',' wood for the fire.']]}
+};
+const GEN = 'account,adapt,admire,afford,alarm,amount,annual,anxious,appeal,apply,arrange,assume,attract,aware,balance,barrier,behave,belong,benefit,blame,border,brief,budget,burden,campaign,capable,career,cease,challenge,channel,claim,climate,collapse,combine,comfort,commit,compare,complain,concept,concern,confirm,conflict,consist,constant,contact,contain,contrast,convince,cope,core,crisis,critic,damage,debate,decline,defend,define,degree,delay,deliver,demand,deny,depend,deserve,detail,device,display,divide,domestic,doubt,draft,duty,earn,edge,element,emerge,employ,enable,encounter,engage,ensure,entire,equal,escape,estate,evident,exact,exceed,expand,expert,explore,extend,factor,feature,flexible,focus,former,frame,fund'.split(',');
+const NEW1 = [1241,1243,1246], NEW2 = [1249,1252,1255,1258,1262], NEWALL = [...NEW1,...NEW2];
+const FIRST = [['r',412],['n',1241],['r',588],['r',301],['n',1243],['r',702],['n',1246],['r',233]];
+const GR = [{k:'again',label:'Again',iv:'<10m',s:'L'},{k:'hard',label:'Hard',iv:'2d',s:'L'},{k:'good',label:'Good',iv:'4d',s:'K'},{k:'easy',label:'Easy',iv:'9d',s:'M'}];
+const fmt = n => n.toLocaleString('en-US');
+function H(r){const x=Math.sin(r*12.9898+78.233)*43758.5453;return x-Math.floor(x)}
+function baseS(r){if(r===412||r===588||r===702)return'L';if(r===301||r===233)return'K';if(NEWALL.includes(r))return'U';const x=H(r);if(r<=400)return x<.62?'M':x<.98?'K':'L';if(r<=900)return x<.3?'M':x<.9?'K':x<.96?'L':'U';if(r<=1240)return x<.08?'M':x<.72?'K':x<.86?'L':'U';if(r<=1600)return x<.22?'K':x<.3?'L':'U';if(r<=2000)return x<.06?'K':'U';return x<.02?'K':'U'}
+const BASE = Array.from({length:2810},(_,r)=>r?baseS(r):'U');
+const SC = {U:'var(--unk)',L:'var(--lrn)',K:'var(--kno)',M:'var(--mas)'};
+function chip(s){
+  if(s==='U')return{label:'Unknown',bg:'var(--tint)',dot:'transparent',ring:'inset 0 0 0 1.5px var(--muted)'};
+  const label={L:'Learning',K:'Known',M:'Mastered'}[s];
+  return{label,bg:`color-mix(in srgb,${SC[s]} 18%,var(--surface))`,dot:SC[s],ring:'none'};
+}
+function tile(s,mark,small){
+  if(mark)return{bg:'var(--surface)',sh:`0 0 0 ${small?1.5:2}px var(--brand)`};
+  if(s==='L')return{bg:`radial-gradient(circle,var(--dot) ${small?1:2}px,var(--lrn) ${small?1.6:2.6}px)`,sh:'none'};
+  if(s==='K')return{bg:'var(--kno)',sh:'none'};
+  if(s==='M')return{bg:'var(--masin)',sh:`inset 0 0 0 ${small?1:2}px var(--mas)`};
+  return{bg:'var(--unk)',sh:'none'};
+}
+const LINE = Array.from({length:30},(_,i)=>1054+Math.round(i*6.2+Math.sin(i*.9)*5));
+
+class Component extends DCLogic {
+  state = { tab:'today', view:null, prev:null, theme:null, ov:{}, ap:{}, anim:{}, streak:23, didToday:false, moreUsed:false,
+    queue:[], qi:0, revealed:false, log:[], sum:null, bandIdx:13, filter:'All', wordRank:null, query:'', mapMode:null, dailyN:5, voice:'US', speaking:null };
+  mapRef = React.createRef(); searchRef = React.createRef();
+  componentDidMount(){ this._mq = window.matchMedia('(prefers-color-scheme: dark)'); this._mql = ()=>this.forceUpdate(); this._mq.addEventListener?.('change',this._mql); }
+  componentWillUnmount(){ this._mq?.removeEventListener?.('change',this._mql); (this._timers||[]).forEach(clearTimeout); }
+  componentDidUpdate(pp,ps){
+    const onMap = this.state.tab==='map' && !this.state.view;
+    if(onMap && (ps.tab!=='map'||ps.view||ps.mapMode!==this.state.mapMode)){
+      const el=this.mapRef.current; if(el){const h=el.querySelector('[data-here="1"]'); if(h) el.scrollTop=Math.max(0,h.offsetTop-90);}
+      this.flushPending();
+    }
+    if(this.state.tab==='search'&&ps.tab!=='search') this.searchRef.current?.focus();
+  }
+  st(r){ return this.state.ap[r] ?? BASE[r]; }
+  marker(){ return NEWALL.find(r=>this.st(r)==='U') ?? null; }
+  wordAt(r){ return WD[r] || {w:GEN[(r-1)%100],ipa:'',pos:'word',def:'',ex:[]}; }
+  say(text,key){ try{ const u=new SpeechSynthesisUtterance(text); u.lang=this.state.voice==='UK'?'en-GB':'en-US'; u.rate=.92; u.onend=()=>this.setState({speaking:null}); speechSynthesis.cancel(); speechSynthesis.speak(u); this.setState({speaking:key}); }catch(e){} }
+  tick(){ try{ navigator.vibrate?.(8); }catch(e){} }
+  flushPending(){
+    const pend = Object.keys(this.state.ov).filter(r=>this.state.ov[r]!==this.state.ap[r]);
+    if(!pend.length) return;
+    this._timers = this._timers||[];
+    pend.forEach((r,i)=>this._timers.push(setTimeout(()=>{
+      this.setState(s=>({ap:{...s.ap,[r]:s.ov[r]},anim:{...s.anim,[r]:true}}));
+      this._timers.push(setTimeout(()=>this.setState(s=>{const a={...s.anim};delete a[r];return{anim:a}}),600));
+    },350+i*160)));
+  }
+  setNow(r,s){ this.setState(st=>({ov:{...st.ov,[r]:s},ap:{...st.ap,[r]:s}})); }
+  startSession(q){ this.setState({view:'session',queue:q,qi:0,revealed:false,log:[]}); }
+  advance(entry){
+    this.tick();
+    const {queue,qi}=this.state, log=[...this.state.log,entry];
+    const ov={...this.state.ov,[entry.r]:entry.s};
+    if(qi+1<queue.length){ this.setState({ov,log,qi:qi+1,revealed:false}); return; }
+    const revs=log.filter(l=>l.t==='r'), news=log.filter(l=>l.t==='n');
+    const first=!this.state.didToday;
+    this.setState({ov,log,view:'summary',didToday:true,streak:this.state.streak+(first?1:0),moreUsed:this.state.moreUsed||!first,
+      sum:{revN:revs.length,newN:news.filter(l=>l.s!=='K').length,acc:revs.length?Math.round(revs.filter(l=>l.g!=='again').length/revs.length*100)+'%':'—',
+        streakNote:first?'day streak · +1':'day streak',ranks:news.map(l=>l.r)}});
+  }
+  open(view,extra){ this.setState(s=>({prev:{view:s.view,tab:s.tab},view,...extra})); }
+  renderVals(){
+    const S=this.state, P=this.props;
+    const themePref = S.theme ?? P.theme ?? 'light';
+    const dark = themePref==='dark' || (themePref==='system' && this._mq?.matches);
+    const mapMode = S.mapMode ?? P.mapView ?? 'bands';
+    const frontMode = P.reviewFront ?? 'word';
+    let cM=0,cK=0,cL=0,cU=0; for(let r=1;r<=2809;r++){const s=this.st(r); if(s==='M')cM++;else if(s==='K')cK++;else if(s==='L')cL++;else cU++;}
+    const known=cM+cK, mk=this.marker();
+    const bands=[]; for(let b=1;b<=29;b++){const a=(b-1)*100+1,e=Math.min(b*100,2809),tiles=[];let k=0,here=false;
+      for(let r=a;r<=e;r++){const s=this.st(r),m=r===mk;if(s==='K'||s==='M')k++;if(m)here=true;const t=tile(s,m,false),ts=tile(s,m,true);
+        tiles.push({bg:t.bg,sh:t.sh,bgS:ts.bg,shS:ts.sh,an:S.anim[r]?'wmPop 520ms ease-out':'none'});}
+      bands.push({label:`${fmt(a)}–${fmt(e)}`,start:fmt(a),pct:Math.round(k/(e-a+1)*100),tiles,here,notHere:!here,hereAttr:here?'1':'0',open:()=>this.open('band',{bandIdx:b,filter:'All'})});}
+    const W = r => { const d=this.wordAt(r),s=this.st(r); return {...d,rank:r,rankFmt:fmt(r),chip:chip(s),len:d.w.length,
+      cz:d.ex[0]?{a:d.ex[0][0],c:d.ex[0][2]}:{a:'',c:''},say:ev=>{ev?.stopPropagation?.();this.say(d.w,'w'+r)},
+      exs:d.ex.map((x,i)=>({a:x[0],b:x[1],c:x[2],col:S.speaking===`e${r}-${i}`?'var(--brand)':'var(--muted)',say:ev=>{ev?.stopPropagation?.();this.say(x.join(''),`e${r}-${i}`)}}))}; };
+    const item = S.view==='session' ? S.queue[S.qi] : null;
+    const cur = item ? W(item[1]) : W(412);
+    const isReview = !!item && item[0]==='r', isNewCard = !!item && item[0]==='n';
+    const pend = NEWALL.filter(r=>this.st(r)==='U' && !(S.ov[r]&&S.ov[r]!=='U'));
+    const doneQueue = S.didToday;
+    const onTab = !S.view;
+    const tc = {}; ['today','map','search','progress'].forEach(t=>tc[t]=S.tab===t?'var(--brand)':'var(--muted)');
+    const seg = on => ({bg:on?'var(--surface)':'transparent',sh:on?'var(--shadow)':'none',c:on?'var(--text)':'var(--muted)'});
+    const bi=S.bandIdx, ba=(bi-1)*100+1, be=Math.min(bi*100,2809); let bM=0,bK=0,bL=0; const rows=[];
+    for(let r=ba;r<=be;r++){const s=this.st(r); if(s==='M')bM++;else if(s==='K')bK++;else if(s==='L')bL++;
+      const f=S.filter; if(f==='All'||(f==='Unknown'&&s==='U')||(f==='Learning'&&s==='L')||(f==='Known'&&(s==='K'||s==='M'))){const d=this.wordAt(r);
+        rows.push({rankFmt:fmt(r),w:d.w,short:d.def||d.pos,chip:chip(s),open:()=>this.open('word',{wordRank:r})});}}
+    const bn=be-ba+1;
+    const q=S.query.trim().toLowerCase();
+    const pool=[...Object.keys(WD).map(Number),...GEN.map((_,i)=>1101+i)];
+    const results=q?pool.map(r=>({r,d:this.wordAt(r)})).filter(x=>x.d.w.startsWith(q)).slice(0,20).map(({r,d})=>({rankFmt:fmt(r),w:d.w,chip:chip(this.st(r)),open:()=>this.open('word',{wordRank:r})})):[];
+    const wr=S.wordRank??412, wdd=W(wr), ws=this.st(wr);
+    const hc={again:'var(--again)',hard:'var(--hard)',good:'var(--good)',easy:'var(--easy)'};
+    const prevV=S.prev?.view, backLabel = prevV==='band'?'Band':prevV==='summary'?'Summary':S.prev?.tab==='search'?'Search':S.prev?.tab==='map'?'Map':'Today';
+    const sumWords=(S.sum?.ranks||[]).map(r=>({w:this.wordAt(r).w,chip:chip(S.ov[r]||this.st(r)),open:()=>this.open('word',{wordRank:r})}));
+    const confetti = Array.from({length:18},(_,i)=>({x:(8+H(i+3)*84)+'%',y:(4+H(i+40)*20)+'%',s:(5+H(i+9)*5)+'px',r:Math.round(H(i+7)*90)+'deg',d:Math.round(i*35)+'ms',c:['var(--brand)','var(--kno)','var(--lrn)','var(--mas)'][i%4]}));
+    return {
+      themeClass: dark?'wm-d':'wm-l',
+      sToday: onTab&&S.tab==='today', sMap: onTab&&S.tab==='map', sSearch: onTab&&S.tab==='search', sProgress: onTab&&S.tab==='progress',
+      vSession:S.view==='session', vSummary:S.view==='summary', vBand:S.view==='band', vWord:S.view==='word', vSettings:S.view==='settings',
+      showTabs: S.view!=='session'&&S.view!=='summary', noTabs: S.view==='session'||S.view==='summary', tc,
+      goToday:()=>this.setState({tab:'today',view:null}), goMap:()=>this.setState({tab:'map',view:null}), goSearch:()=>this.setState({tab:'search',view:null}), goProgress:()=>this.setState({tab:'progress',view:null}),
+      streak:S.streak, flameFill:S.didToday?'#F08A24':'none', streakTitle:S.didToday?'Streak kept today':'Study today to keep your streak',
+      pct:Math.round(known/2809*100), knownFmt:fmt(known), cM:fmt(cM), cK:fmt(cK), cL:fmt(cL), cU:fmt(cU),
+      barM:(cM/2809*100)+'%', barK:(cK/2809*100)+'%', barL:(cL/2809*100)+'%',
+      nextChips: pend.slice(0,5).map(r=>({w:WD[r].w,open:()=>this.open('word',{wordRank:r})})), hasNext: pend.length>0,
+      notDone:!doneQueue, isDone:doneQueue, canMore:doneQueue&&!S.moreUsed&&pend.length>0,
+      dueLine:'5 reviews · 3 new words',
+      start:()=>this.startSession(FIRST), learnMore:()=>this.startSession(NEW2.map(r=>['n',r])),
+      isBands:mapMode==='bands', isCompact:mapMode==='compact', mmB:seg(mapMode==='bands'), mmC:seg(mapMode==='compact'),
+      setBands:()=>this.setState({mapMode:'bands'}), setCompact:()=>this.setState({mapMode:'compact'}), mapRef:this.mapRef, bands,
+      sesPct:S.queue.length?((S.qi+(S.revealed||isNewCard?.5:0))/S.queue.length*100)+'%':'0%', sesLabel:`${Math.min(S.qi+1,S.queue.length)} / ${S.queue.length}`,
+      closeSession:()=>this.setState({view:null,tab:'today'}),
+      isReview, isNewCard, cur, frontWord:frontMode!=='cloze', frontCloze:frontMode==='cloze',
+      flipT:S.revealed?'rotateY(180deg)':'rotateY(0deg)', flipTr:P.reducedMotion?'none':'transform 350ms cubic-bezier(.34,1.3,.5,1)',
+      reveal:()=>{ if(!S.revealed) this.setState({revealed:true}); },
+      showAnswerBtn:isReview&&!S.revealed, showGrades:isReview&&S.revealed,
+      grades:GR.map(g=>({label:g.label,iv:g.iv,c:`var(--${g.k})`,bg:`color-mix(in srgb,var(--${g.k}) 16%,var(--surface))`,go:()=>this.advance({t:'r',r:item[1],s:g.s,g:g.k})})),
+      knowIt:()=>this.advance({t:'n',r:item[1],s:'K'}), learnIt:()=>this.advance({t:'n',r:item[1],s:'L'}),
+      sum:{...(S.sum||{revN:0,newN:0,acc:'—',streakNote:''}),words:sumWords,hasWords:sumWords.length>0}, confetti: P.reducedMotion?[]:confetti,
+      seeMap:()=>this.setState({view:null,tab:'map'}), doneSummary:()=>this.setState({view:null,tab:'today'}),
+      back:()=>{ const p=S.prev||{view:null,tab:S.tab}; this.setState({view:p.view,tab:p.tab,prev:p.view==='band'?{view:null,tab:'map'}:null}); },
+      band:{label:`${fmt(ba)}–${fmt(be)}`,pct:Math.round((bM+bK)/bn*100),wM:(bM/bn*100)+'%',wK:(bK/bn*100)+'%',wL:(bL/bn*100)+'%'},
+      filters:['All','Unknown','Learning','Known'].map(f=>({label:f,bg:S.filter===f?'var(--text)':'var(--surface)',c:S.filter===f?'var(--bg)':'var(--text)',bd:S.filter===f?'var(--text)':'var(--border)',go:()=>this.setState({filter:f})})),
+      bandRows:rows, bandEmpty:rows.length===0,
+      query:S.query, onQuery:e=>this.setState({query:e.target.value}), clearQuery:()=>this.setState({query:''}), hasQuery:!!S.query, searchRef:this.searchRef,
+      showRecent:!q, recent:['decide','achieve','rural'].map(x=>({q:x,go:()=>this.setState({query:x})})), results, noResults:!!q&&results.length===0,
+      wd:{...wdd,def:wdd.def||'Definition and examples arrive when you start learning this word.',
+        next:{U:'Not started',L:'Tomorrow',K:'In 4 days',M:'In 3 weeks'}[ws], hist:(WD[wr]?.hist||[]).map(h=>hc[h]), noHist:!(WD[wr]?.hist),
+        learnLabel:ws==='U'?'Start learning':'Review now'},
+      backLabel,
+      wdKnown:()=>this.setNow(wr,'K'), wdReset:()=>this.setNow(wr,'U'), wdLearn:()=>{ if(ws==='U') this.setNow(wr,'L'); else this.startSession([['r',wr]]); },
+      openSettings:()=>this.open('settings',{}),
+      linePts: LINE.map((v,i)=>`${(i/29*300).toFixed(1)},${(105-(v-1040)/(LINE[29]-1040+10)*95).toFixed(1)}`).join(' '),
+      revBars: Array.from({length:14},(_,i)=>({h:(20+H(i+100)*70)+'%',c:i===13?'var(--brand)':'var(--tint)'})),
+      dailyN:S.dailyN, decN:()=>this.setState({dailyN:Math.max(3,S.dailyN-1)}), incN:()=>this.setState({dailyN:Math.min(20,S.dailyN+1)}),
+      themeOpts:['System','Light','Dark'].map(l=>{const v=l.toLowerCase();return{label:l,...seg(themePref===v),go:()=>this.setState({theme:v})}}),
+      voiceOpts:['US','UK'].map(l=>({label:l,...seg(S.voice===l),go:()=>this.setState({voice:l})})),
+      resetAll:()=>{ if(confirm('Reset all progress? This cannot be undone.')) this.setState({ov:{},ap:{},didToday:false,moreUsed:false,streak:23,view:null,tab:'today'}); }
+    };
+  }
+}
+</script>
+
+
+</body></html>

@@ -1,0 +1,18 @@
+{
+  "name": "wordmap-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "dev:api": "npm run dev -w @wordmap/api",
+    "dev:web": "npm run dev -w @wordmap/web",
+    "build": "npm run build -w @wordmap/shared && npm run build -w @wordmap/api && npm run build -w @wordmap/web",
+    "test": "npm run test -w @wordmap/shared && npm run test -w @wordmap/api && npm run test -w @wordmap/web",
+    "test:e2e": "npm run test:e2e -w @wordmap/web",
+    "build:words": "npm run build:words -w @wordmap/api",
+    "start": "npm run start -w @wordmap/api"
+  },
+  "dependencies": {
+    "@ycniuqton/devlens": "^0.1.29"
+  }
+}

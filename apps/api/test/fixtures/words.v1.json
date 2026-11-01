@@ -1,0 +1,608 @@
+{
+ "contentVersion": "fixture-1",
+ "words": [
+  {
+   "id": "ngsl:0001",
+   "lemma": "alpha",
+   "rank": 1,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of alpha"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with alpha.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ],
+   "forms": [
+    "alphas"
+   ]
+  },
+  {
+   "id": "ngsl:0002",
+   "lemma": "bravo",
+   "rank": 2,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of bravo"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with bravo.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0003",
+   "lemma": "charlie",
+   "rank": 3,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of charlie"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with charlie.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0004",
+   "lemma": "delta",
+   "rank": 4,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of delta"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with delta.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0005",
+   "lemma": "echo",
+   "rank": 5,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of echo"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with echo.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0006",
+   "lemma": "foxtrot",
+   "rank": 6,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of foxtrot"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with foxtrot.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0007",
+   "lemma": "golf",
+   "rank": 7,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of golf"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with golf.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0008",
+   "lemma": "hotel",
+   "rank": 8,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of hotel"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with hotel.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0009",
+   "lemma": "india",
+   "rank": 9,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of india"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with india.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0010",
+   "lemma": "juliet",
+   "rank": 10,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of juliet"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with juliet.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0011",
+   "lemma": "kilo",
+   "rank": 11,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of kilo"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with kilo.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0012",
+   "lemma": "lima",
+   "rank": 12,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of lima"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with lima.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0013",
+   "lemma": "mike",
+   "rank": 13,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of mike"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with mike.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0014",
+   "lemma": "november",
+   "rank": 14,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of november"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with november.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0015",
+   "lemma": "oscar",
+   "rank": 15,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of oscar"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with oscar.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0016",
+   "lemma": "papa",
+   "rank": 16,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of papa"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with papa.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0017",
+   "lemma": "quebec",
+   "rank": 17,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of quebec"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with quebec.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0018",
+   "lemma": "romeo",
+   "rank": 18,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of romeo"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with romeo.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0019",
+   "lemma": "sierra",
+   "rank": 19,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of sierra"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with sierra.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0020",
+   "lemma": "tango",
+   "rank": 20,
+   "band": 1,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of tango"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with tango.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0101",
+   "lemma": "uniform",
+   "rank": 101,
+   "band": 2,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of uniform"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with uniform.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0102",
+   "lemma": "victor",
+   "rank": 102,
+   "band": 2,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of victor"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with victor.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0103",
+   "lemma": "whiskey",
+   "rank": 103,
+   "band": 2,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of whiskey"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with whiskey.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0104",
+   "lemma": "xray",
+   "rank": 104,
+   "band": 2,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of xray"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with xray.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  },
+  {
+   "id": "ngsl:0105",
+   "lemma": "yankee",
+   "rank": 105,
+   "band": 2,
+   "pos": [
+    "noun"
+   ],
+   "definitions": [
+    {
+     "pos": "noun",
+     "text": "definition of yankee"
+    }
+   ],
+   "examples": [
+    {
+     "text": "A sentence with yankee.",
+     "source": "custom"
+    }
+   ],
+   "listIds": [
+    "ngsl"
+   ]
+  }
+ ]
+}

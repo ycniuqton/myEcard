@@ -1,0 +1,117 @@
+# lemma|pos|ipa|definition|example   (hand-written seed; real NGSL ranks replace the order via data/raw/ngsl.csv)
+the|determiner|ðə|used before a noun that is known or already mentioned|The book on the table is mine.
+be|verb|biː|to exist or to have a quality or state|She wants to be a doctor.
+of|preposition|əv|belonging to, or coming from something|This is a photo of my family.
+and|conjunction|ænd|used to join words or ideas together|I bought bread and milk.
+to|preposition|tuː|towards a place, person or thing|We walked to the station.
+have|verb|hæv|to own, hold or possess something|I have two brothers.
+it|pronoun|ɪt|used for a thing or animal already mentioned|It is raining outside.
+for|preposition|fɔːr|intended to be given to or used by someone|This gift is for you.
+you|pronoun|juː|the person you are speaking to|Can you help me?
+he|pronoun|hiː|a man or boy already mentioned|He works in a bank.
+with|preposition|wɪð|together, in the company of|She lives with her aunt.
+on|preposition|ɑːn|in contact with and supported by a surface|Put the keys on the table.
+do|verb|duː|to perform or carry out an action|What do you do every morning?
+say|verb|seɪ|to speak words|He didn't say anything.
+this|determiner|ðɪs|the thing or person that is near or just mentioned|This coffee is very hot.
+they|pronoun|ðeɪ|people or things already mentioned|They moved to Spain last year.
+at|preposition|æt|in or near a place or time|We met at noon.
+but|conjunction|bʌt|used to introduce a contrast|I like tea, but I prefer coffee.
+we|pronoun|wiː|the speaker and other people|We are late for school.
+his|determiner|hɪz|belonging to a man or boy|His car is parked outside.
+from|preposition|frʌm|starting at a place or time|She comes from Canada.
+that|determiner|ðæt|the thing or person farther away or already known|That house is very old.
+not|adverb|nɑːt|used to make a word or sentence negative|I am not hungry.
+can|verb|kæn|to be able to do something|She can speak three languages.
+will|verb|wɪl|used to talk about the future|It will be sunny tomorrow.
+by|preposition|baɪ|used to show who or what does something|The window was broken by a ball.
+or|conjunction|ɔːr|used to give a choice|Would you like tea or coffee?
+as|preposition|æz|in the role or form of|He works as a teacher.
+what|pronoun|wʌt|used to ask about a thing|What is your name?
+go|verb|ɡoʊ|to move or travel from one place to another|I go to work by bus.
+their|determiner|ðer|belonging to them|Their house has a big garden.
+make|verb|meɪk|to create or produce something|She makes bread every Sunday.
+know|verb|noʊ|to have information in your mind|I know the answer.
+take|verb|teɪk|to get hold of or carry something|Take an umbrella with you.
+see|verb|siː|to notice with your eyes|I can see the mountains from here.
+come|verb|kʌm|to move towards the speaker|Come and sit with us.
+think|verb|θɪŋk|to have an opinion or idea|I think it's a good plan.
+look|verb|lʊk|to direct your eyes at something|Look at that bird!
+want|verb|wɑːnt|to wish to have or do something|I want a glass of water.
+give|verb|ɡɪv|to hand something to someone|Please give me your phone number.
+use|verb|juːz|to do something with a tool or method|You can use my pen.
+find|verb|faɪnd|to discover or locate something|I can't find my keys.
+tell|verb|tel|to give information to someone in words|Tell me what happened.
+ask|verb|æsk|to put a question to someone|She asked me for directions.
+work|verb|wɜːrk|to do a job or activity|He works at a hospital.
+seem|verb|siːm|to give the impression of being|You seem tired today.
+feel|verb|fiːl|to experience an emotion or sensation|I feel happy today.
+try|verb|traɪ|to attempt to do something|Try to arrive on time.
+leave|verb|liːv|to go away from a place|The train leaves at six.
+call|verb|kɔːl|to telephone someone, or to name something|I'll call you tonight.
+need|verb|niːd|to require something because it is necessary|We need more time.
+become|verb|bɪˈkʌm|to begin to be something|He became a famous singer.
+mean|verb|miːn|to express or have as a sense|What does this word mean?
+keep|verb|kiːp|to continue to have or hold something|Keep the change.
+let|verb|let|to allow someone to do something|Let me help you.
+begin|verb|bɪˈɡɪn|to start doing something|The film begins at eight.
+help|verb|help|to make it easier for someone to do something|Can you help me carry this?
+talk|verb|tɔːk|to speak with someone|We talked for an hour.
+turn|verb|tɜːrn|to change direction or position|Turn left at the corner.
+start|verb|stɑːrt|to begin something|Let's start the lesson.
+show|verb|ʃoʊ|to let someone see something|Show me your passport.
+hear|verb|hɪr|to notice sound with your ears|I can't hear you.
+play|verb|pleɪ|to take part in a game or sport|The children play in the park.
+run|verb|rʌn|to move quickly on foot|She runs five miles a day.
+move|verb|muːv|to change place or position|Please move your car.
+like|verb|laɪk|to enjoy or find pleasant|I like this song.
+live|verb|lɪv|to have your home in a place|They live in London.
+believe|verb|bɪˈliːv|to accept that something is true|I believe you.
+hold|verb|hoʊld|to carry or keep in your hands|Hold my bag for a moment.
+bring|verb|brɪŋ|to carry something to a place|Bring your book tomorrow.
+happen|verb|ˈhæpən|to take place, especially by chance|What happened yesterday?
+write|verb|raɪt|to put words on paper or a screen|Write your name here.
+provide|verb|prəˈvaɪd|to give or supply something needed|The hotel provides free breakfast.
+sit|verb|sɪt|to rest with your body on a seat|Please sit down.
+stand|verb|stænd|to be on your feet|He stood by the door.
+lose|verb|luːz|to no longer have something|I lost my wallet.
+pay|verb|peɪ|to give money for goods or services|I paid for the tickets.
+meet|verb|miːt|to come together with someone|Let's meet at the cafe.
+include|verb|ɪnˈkluːd|to have something as a part|The price includes tax.
+continue|verb|kənˈtɪnjuː|to keep doing something|Please continue reading.
+set|verb|set|to put something in a position|Set the cup on the shelf.
+learn|verb|lɜːrn|to gain knowledge or skill|I'm learning to cook.
+change|verb|tʃeɪndʒ|to become or make different|The weather changed quickly.
+lead|verb|liːd|to go first or guide others|She leads the team well.
+understand|verb|ˌʌndərˈstænd|to know the meaning of something|I don't understand this question.
+watch|verb|wɑːtʃ|to look at something for a time|We watched a movie.
+follow|verb|ˈfɑːloʊ|to come or go after someone|Follow me, please.
+stop|verb|stɑːp|to end a movement or action|The bus stopped suddenly.
+create|verb|kriˈeɪt|to make something new|He created a new website.
+speak|verb|spiːk|to say words aloud|Can you speak slowly?
+read|verb|riːd|to look at and understand written words|I read the news every day.
+allow|verb|əˈlaʊ|to give permission for something|Dogs are not allowed here.
+add|verb|æd|to put something with something else|Add some salt to the soup.
+spend|verb|spend|to use money or time|She spends a lot on books.
+grow|verb|ɡroʊ|to become bigger or develop|Tomatoes grow well here.
+open|verb|ˈoʊpən|to move something so it is not closed|Open the window, please.
+walk|verb|wɔːk|to move on foot at a normal speed|I walk to school.
+win|verb|wɪn|to be the best in a competition|Our team won the match.
+offer|verb|ˈɔːfər|to hold out something for someone to accept|He offered me a seat.
+remember|verb|rɪˈmembər|to keep or bring something in your mind|I remember her face.
+love|verb|lʌv|to feel strong affection for someone|I love my family.
+consider|verb|kənˈsɪdər|to think carefully about something|Consider all the options.
+appear|verb|əˈpɪr|to come into sight|A rainbow appeared in the sky.
+buy|verb|baɪ|to get something by paying money|I bought a new phone.
+wait|verb|weɪt|to stay until something happens|Wait here for a minute.
+serve|verb|sɜːrv|to give food or drink to someone|The waiter served the soup.
+die|verb|daɪ|to stop living|The flowers died in the cold.
+send|verb|send|to make something go to a place|I'll send you an email.
+expect|verb|ɪkˈspekt|to think something will happen|We expect rain tonight.
+build|verb|bɪld|to make something by putting parts together|They built a new bridge.
+stay|verb|steɪ|to remain in a place|Stay with me tonight.
+fall|verb|fɔːl|to drop down to a lower place|Leaves fall in autumn.
+cut|verb|kʌt|to divide something with a sharp tool|Cut the bread into slices.
+reach|verb|riːtʃ|to arrive at or get to something|We reached the top by noon.
+kill|verb|kɪl|to cause someone or something to die|The cold killed the plants.
+remain|verb|rɪˈmeɪn|to stay in the same place or state|Please remain seated.
