@@ -62,6 +62,20 @@ Corrections for single words go in `apps/api/data/raw/manual-fixes.json`; words 
 logged in `apps/api/data/missing.csv`. Bump nothing by hand: the exporter writes `contentVersion` and clients refresh
 their cached word list when it changes.
 
+### Vietnamese meanings
+
+Every word has a short Vietnamese meaning (`vi`, `contentVersion` "3"). Sources, highest priority first:
+`apps/api/data/raw/vi-meanings.json` (reviewed, written for WordMap) then Wiktionary translation tables cached in
+`apps/api/data/cache/vi-wiktionary.json` (CC BY-SA 3.0). Run after `build:words` (a rebuild drops `vi`):
+
+```
+npm run build:vi -w @wordmap/api            # merge overrides + cache into words.v2.json
+npm run build:vi -w @wordmap/api -- --fetch  # also download missing Wiktionary tables first
+```
+
+Words without a meaning are listed in `data/missing.csv` with gap `vi`. In the app, Settings, Meanings switches between
+"Tiếng Việt + EN" and "English" (stored in the browser, not synced).
+
 ## Tests
 
 ```

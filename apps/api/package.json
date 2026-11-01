@@ -9,6 +9,7 @@
     "build": "tsc --noEmit",
     "test": "vitest run",
     "build:words": "tsx data/scripts/build-words.ts",
+    "build:vi": "tsx data/scripts/build-vi.ts",
     "migrate": "tsx src/db/migrate.ts"
   },
   "dependencies": {

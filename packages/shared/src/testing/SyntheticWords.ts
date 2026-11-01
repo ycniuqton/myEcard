@@ -32,6 +32,7 @@ export class SyntheticWords {
       id: SyntheticWords.id(rank), lemma, rank,
       band: Math.ceil(rank / PlacementConfig.BAND_SIZE), pos: [SyntheticFormat.POS],
       definitions: [{ pos: SyntheticFormat.POS, text: `definition of ${lemma}` }],
+      vi: `nghĩa của ${lemma}`,
       examples: [{ text: `A sentence with ${lemma}.`, source: ExampleSource.Custom }],
       listIds: core ? [SyntheticFormat.CORE_LIST] : [SyntheticFormat.EXTENDED_LIST],
     }

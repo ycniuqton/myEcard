@@ -14,6 +14,7 @@ import { Speaker } from '../common/Speaker'
 import { StatusMap } from '../common/StatusMap'
 import { HistoryDots, NextReviewLabel } from './WordLogic'
 import { WordCopy } from './WordCopy'
+import { VietnameseLine } from '../common/VietnameseLine'
 import { SpeakKey, WordChips, WordExamples, WordHeader, WordInfoCard } from './WordParts'
 import { FontSize, FontWeight, Gap, Inset, Leading, Radius, Size } from '../../design/scale'
 import { Border, Motion } from '../../design/styleValues'
@@ -105,6 +106,7 @@ function WordBody({ view }: { view: WordView }) {
     <div style={body}>
       <WordHeader word={word} speaking={speech.key === WORD_KEY} onSay={() => speech.say(WORD_KEY, word.lemma)} />
       <WordChips word={word} status={StatusMap.toLearn(view.status)} />
+      <VietnameseLine word={word} />
       <div style={{ font: Typo.sans(FontWeight.Regular, FontSize.F17, Leading.L26), textWrap: 'pretty' }} data-testid="word-definition">
         {word.definitions[0]?.text ?? WordCopy.NO_DEFINITION}
       </div>

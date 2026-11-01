@@ -6,6 +6,7 @@ import { Typo } from '../../design/typography'
 import { SessionTestId } from './SessionCopy'
 import { IpaFormat } from '../common/IpaFormat'
 import { ExampleSplitter } from './ExampleSplitter'
+import { VietnameseLine } from '../common/VietnameseLine'
 import type { SpeechControls } from './useSpeech'
 import { FontSize, FontWeight, Gap, Inset, Leading, Radius, Size } from '../../design/scale'
 import { Border, IconSize } from '../../design/styleValues'
@@ -110,6 +111,7 @@ export function WordBody({ word, speech, exampleCount, status, lemmaTestId }: Wo
     <>
       <WordHeader word={word} speech={speech} lemmaTestId={lemmaTestId} />
       <WordTags word={word} status={status} />
+      <VietnameseLine word={word} />
       <div style={DEFINITION}>{word.definitions[0]?.text}</div>
       <div style={DIVIDER} />
       <ExampleList word={word} speech={speech} count={exampleCount} />

@@ -11,6 +11,7 @@ export type Word = {
   pos: string[]
   ipa?: string
   definitions: Definition[]
+  vi?: string
   examples: Example[]
   forms?: string[]
   cefr?: Cefr

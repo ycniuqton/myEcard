@@ -2,4 +2,5 @@
 export class StorageKeys {
   static readonly THEME = 'wordmap.theme'
   static readonly MAP_MODE = 'wordmap.mapMode'
+  static readonly MEANING_LANGUAGE = 'wordmap.meaningLanguage'
 }

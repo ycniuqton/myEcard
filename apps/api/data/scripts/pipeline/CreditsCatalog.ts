@@ -29,12 +29,23 @@ export class CreditsCatalog {
     return { name: extension.name, license: extension.license, url: extension.url, note }
   }
 
+  static readonly WIKTIONARY_NAME = 'Wiktionary via dictionaryapi.dev and kaikki.org'
+  static readonly VIETNAMESE_NAME = 'Vietnamese meanings'
+
+  static vietnameseCredit(): Credit {
+    return {
+      name: CreditsCatalog.VIETNAMESE_NAME, license: 'CC BY-SA 3.0', url: 'https://kaikki.org/dictionary/English/',
+      note: 'Vietnamese translations from Wiktionary (kaikki.org extracts); gaps filled with short meanings written for WordMap.',
+    }
+  }
+
   static credits(extension?: ExtensionSourceInfo): Credit[] {
     const { NGSL_LICENSE: license, NGSL_SOURCE: url } = CreditsCatalog
     return [
       ...(extension ? [CreditsCatalog.extensionCredit(extension)] : []),
       { name: 'NGSL 1.2 and NGSL-Spoken 1.2', license, url, note: 'Browne, Culligan and Phillips. Word ranks, spoken tag and inflected forms. Modified word file remains CC BY-SA 4.0.' },
-      { name: 'Wiktionary via dictionaryapi.dev and kaikki.org', license: 'CC BY-SA 3.0', url: 'https://dictionaryapi.dev/', note: 'Definitions, parts of speech and IPA (kaikki.org Wiktionary extracts as fallback).' },
+      { name: CreditsCatalog.WIKTIONARY_NAME, license: 'CC BY-SA 3.0', url: 'https://dictionaryapi.dev/', note: 'Definitions, parts of speech and IPA (kaikki.org Wiktionary extracts as fallback).' },
+      CreditsCatalog.vietnameseCredit(),
       { name: 'Tatoeba', license: 'CC BY 2.0 FR', url: 'https://tatoeba.org/', note: 'Example sentences; each carries its Tatoeba sentence id (tatoeba.org/sentences/show/ID).' },
       { name: 'Custom entries', license, url: CreditsCatalog.NO_URL, note: 'Original definitions and sentences written for WordMap to fill gaps.' },
       { name: 'Inter, IBM Plex Mono, Source Serif 4', license: 'SIL OFL 1.1', url: 'https://fontsource.org/', note: 'Typefaces.' },

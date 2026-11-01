@@ -18,6 +18,12 @@
     "note": "Definitions, parts of speech and IPA (kaikki.org Wiktionary extracts as fallback)."
   },
   {
+    "name": "Vietnamese meanings",
+    "license": "CC BY-SA 3.0",
+    "url": "https://kaikki.org/dictionary/English/",
+    "note": "Vietnamese translations from Wiktionary (kaikki.org extracts); gaps filled with short meanings written for WordMap."
+  },
+  {
     "name": "Tatoeba",
     "license": "CC BY 2.0 FR",
     "url": "https://tatoeba.org/",

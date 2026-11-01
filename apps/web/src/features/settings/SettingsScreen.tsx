@@ -8,6 +8,8 @@ import { RoutePath } from '../../app/routes'
 import { useTheme } from '../../app/theme/useTheme'
 import { useAppStore } from '../../store'
 import { AccountCard } from '../auth/AccountCard'
+import { MeaningCopy, MeaningLanguage, MeaningLanguageStore } from '../common/MeaningLanguage'
+import { useMeaningLanguage } from '../common/VietnameseLine'
 import { Notice, NoticeTone, SettingsCopy, SettingsFiles } from './SettingsSupport'
 import { SettingsTestId } from './SettingsTestId'
 import { FontSize, FontWeight, Gap, Inset, Layer, Leading, Radius, Size } from '../../design/scale'
@@ -116,6 +118,7 @@ function PreferencesCard() {
   const settings = useAppStore(s => s.settings)
   const update = useAppStore(s => s.updateSettings)
   const { preference, setPreference } = useTheme()
+  const meaning = useMeaningLanguage()
   const pickTheme = (theme: Theme) => {
     setPreference(SettingsCopy.themePreference(theme))
     void update({ theme })
@@ -140,6 +143,10 @@ function PreferencesCard() {
       <SettingRow height={60}>
         <span style={ROW_TEXT}>{SettingsCopy.THEME}</span>
         <Segmented options={SettingsCopy.THEMES} value={SettingsCopy.themeOf(preference)} label={SettingsCopy.THEME} onChange={pickTheme} itemTestId={v => `${SettingsTestId.ThemePrefix}${v}`} />
+      </SettingRow>
+      <SettingRow height={60}>
+        <span style={ROW_TEXT}>{MeaningCopy.SETTING}</span>
+        <Segmented<MeaningLanguage> options={MeaningCopy.OPTIONS} value={meaning} label={MeaningCopy.SETTING} onChange={MeaningLanguageStore.set} itemTestId={v => `${MeaningCopy.SETTING_TEST_PREFIX}${v}`} />
       </SettingRow>
       <SettingRow height={60}>
         <span style={ROW_TEXT}>{SettingsCopy.VOICE}</span>
