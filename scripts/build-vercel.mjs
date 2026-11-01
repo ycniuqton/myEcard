@@ -10,7 +10,7 @@ const FUNCTION_DIR = join(OUT, 'functions', 'api.func')
 const WEB_DIST = join(ROOT, 'apps', 'web', 'dist')
 const API_ENTRY = join(ROOT, 'apps', 'api', 'api', 'index.ts')
 const PGLITE_STUB = join(ROOT, 'scripts', 'stubs', 'pglite-stub.mjs')
-const NODE_RUNTIME = 'nodejs20.x'
+const NODE_RUNTIME = 'nodejs22.x'
 const BUNDLE_BANNER = "import { createRequire as __cr } from 'node:module'; const require = __cr(import.meta.url);"
 
 const ROUTES = [
