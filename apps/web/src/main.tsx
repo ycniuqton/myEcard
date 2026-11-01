@@ -11,16 +11,20 @@ import { BrowserRouter } from 'react-router-dom'
 import { registerSW } from 'virtual:pwa-register'
 import { App } from './app/App'
 import { ThemeProvider } from './app/theme/ThemeProvider'
-import { useAppStore } from './store'
+import { AuthGate } from './auth/AuthGate'
+import { AuthProvider } from './auth/AuthProvider'
 
 registerSW({ immediate: true })
-void useAppStore.getState().init()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider>
       <BrowserRouter>
-        <App />
+        <AuthProvider>
+          <AuthGate>
+            <App />
+          </AuthGate>
+        </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,

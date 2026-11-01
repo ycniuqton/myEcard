@@ -36,6 +36,7 @@
  *   updateSettings(Partial<Settings>)           dailyNew, theme, voice, reminderTime, placementDone
  *   search(query) -> SearchHit[] (sync, local, prefix then contains, max 20) | rememberSearch(q) | clearRecentSearches()
  *   exportData() / exportJson() / importData(snapshot|json) / resetProgress()   import+reset need the server (throw ApiError offline)
+ *   bindDatabase(name|null) / unbindDatabase(wipe) / flushPending()   per-account db switching (see auth/); mode none binds the legacy db
  *
  * SELECTORS (functions of state; wrap array results in useMemo or useShallow)
  *   statusOfRank(s, rank) -> Status | selectBandSummary(s, band) | selectBandTiles(s, band) -> {rank,wordId,status,isMarker}[]
@@ -45,13 +46,15 @@
  *   Enums: BandFilter (All/Unknown/Learning/Known), SessionItemKind (Review/New), NewWordAnswer, Status/Grade from @wordmap/shared
  */
 import { create } from 'zustand'
-import { ApiClient, DefaultSettings, OfflineStore, SyncEngine } from '../api'
+import { ApiClient, OfflineStore, SyncEngine } from '../api'
+import { AuthConfig } from '../auth/AuthConfig'
+import { AuthRuntime } from '../auth/AuthRuntime'
 import { AppController } from './AppController'
 import { DataController } from './DataController'
-import { StateDeriver } from './ProgressView'
+import { InitialData } from './InitialData'
 import { SessionController } from './SessionController'
-import type { AppState, StoreActions, StoreContext, StoreData, StoreDeps } from './StoreTypes'
-import { WordIndex } from './WordIndex'
+import type { AppState, StoreActions, StoreContext, StoreDeps } from './StoreTypes'
+import { UserBinder } from './UserBinder'
 
 export * from './StoreTypes'
 export * from './StoreConfig'
@@ -63,23 +66,10 @@ export { WordIndex } from './WordIndex'
 /** Builds the default dependencies (real API, IndexedDB, browser sync). */
 export class StoreDepsFactory {
   static create(): StoreDeps {
-    const api = new ApiClient()
-    const offline = new OfflineStore()
+    const api = new ApiClient({ auth: AuthRuntime.tokenProvider() })
+    const offline = new OfflineStore(AuthConfig.usesAuth() ? null : AuthConfig.LEGACY_DB)
     const clock = () => new Date()
     return { api, offline, clock, engine: new SyncEngine({ store: offline, api, clock }) }
-  }
-}
-
-class InitialData {
-  static build(deps: StoreDeps): StoreData {
-    const index = new WordIndex([])
-    const settings = DefaultSettings.create()
-    const derived = new StateDeriver().derive({ index, userWords: new Map(), dayStats: [], settings, now: deps.clock() })
-    return {
-      ready: false, loadError: null, contentVersion: null, index, words: index.words,
-      byId: index.byId, byRank: index.byRank, userWords: new Map(), dayStats: [], reviewLogs: [],
-      settings, recentSearches: [], sync: deps.engine.status(), session: null, ...derived,
-    }
   }
 }
 
@@ -88,6 +78,7 @@ class ActionBinder {
     const app = new AppController(ctx)
     const session = new SessionController(ctx)
     const data = new DataController(ctx)
+    const binder = new UserBinder(ctx, app)
     return {
       init: () => app.init(), refresh: () => app.refresh(), refreshToday: () => app.refreshToday(),
       startSession: () => session.start(), learnMore: () => session.learnMore(), startWordReview: id => session.startWord(id),
@@ -98,6 +89,7 @@ class ActionBinder {
       search: q => app.search(q), rememberSearch: q => app.rememberSearch(q), clearRecentSearches: () => app.clearRecentSearches(),
       exportData: () => data.exportData(), exportJson: () => data.exportJson(),
       importData: i => data.importData(i), resetProgress: () => data.resetProgress(),
+      bindDatabase: n => binder.bind(n), unbindDatabase: w => binder.unbind(w), flushPending: () => binder.flushPending(),
     }
   }
 }

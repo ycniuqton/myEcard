@@ -17,11 +17,11 @@ export class TransferPaths {
 /** GET /export, POST /import, DELETE /progress. */
 export class DataTransferRoute extends BaseRoute {
   register(api: FastifyInstance): void {
-    api.get(TransferPaths.EXPORT, async (_req, reply) => {
+    api.get(TransferPaths.EXPORT, async (req, reply) => {
       reply.header(TransferPaths.DISPOSITION_HEADER, ExportHeaders.DISPOSITION)
-      return this.c.transfer.export()
+      return this.scope(req).transfer.export()
     })
-    api.post(TransferPaths.IMPORT, async req => this.c.transfer.import(this.parse(Schemas.snapshot, req.body) as ImportRequest))
-    api.delete(TransferPaths.PROGRESS, async () => this.c.transfer.reset())
+    api.post(TransferPaths.IMPORT, async req => this.scope(req).transfer.import(this.parse(Schemas.snapshot, req.body) as ImportRequest))
+    api.delete(TransferPaths.PROGRESS, async req => this.scope(req).transfer.reset())
   }
 }

@@ -1,6 +1,6 @@
 import {
   CardFactory, DateUtil, ReviewMode, SchedulerManager, SessionPlanner, Status,
-  type Card, type DayUpdateRequest, type ReviewLog, type ReviewRequest, type ReviewResponse,
+  type Card, type DayStat, type DayUpdateRequest, type ReviewLog, type ReviewRequest, type ReviewResponse,
   type StateResponse, type UserWord,
 } from '@wordmap/shared'
 import type { ProgressRepository } from '../repositories/ProgressRepository'
@@ -21,62 +21,71 @@ export class ProgressManager {
     private readonly planner = new SessionPlanner(),
   ) {}
 
-  state(): StateResponse {
+  async state(): Promise<StateResponse> {
     return {
-      settings: this.settings.get(),
-      userWords: this.repo.listUserWords(),
-      dayStats: this.repo.listDayStats(),
-      reviewLogs: this.repo.listReviewLogs(),
+      settings: await this.settings.get(),
+      userWords: await this.repo.listUserWords(),
+      dayStats: await this.repo.listDayStats(),
+      reviewLogs: await this.repo.listReviewLogs(),
       serverTime: this.clock.iso(),
     }
   }
 
-  know(wordId: string): UserWord {
+  async know(wordId: string): Promise<UserWord> {
     this.content.require(wordId)
     const card: Card = { ...CardFactory.assumedKnown(this.clock.now()), assumed: false }
-    return this.save(wordId, card, this.repo.getUserWord(wordId)?.firstSeenAt)
+    return this.save(wordId, card, (await this.repo.getUserWord(wordId))?.firstSeenAt)
   }
 
-  learn(wordId: string): UserWord {
+  async learn(wordId: string): Promise<UserWord> {
     this.content.require(wordId)
-    return this.save(wordId, CardFactory.learning(this.clock.now()), this.repo.getUserWord(wordId)?.firstSeenAt)
+    const firstSeenAt = (await this.repo.getUserWord(wordId))?.firstSeenAt
+    return this.save(wordId, CardFactory.learning(this.clock.now()), firstSeenAt)
   }
 
-  reset(wordId: string): null {
+  async reset(wordId: string): Promise<null> {
     this.content.require(wordId)
-    this.save(wordId, CardFactory.fresh())
+    await this.save(wordId, CardFactory.fresh())
     return null
   }
 
-  review(req: ReviewRequest): ReviewResponse {
-    return this.repo.transaction(() => {
-      const replay = this.repo.getReviewLog(req.clientId)
+  async resetMany(wordIds: string[]): Promise<void> {
+    const stamp = this.clock.iso()
+    const rows = wordIds.map(wordId => ({ ...CardFactory.fresh(), wordId, updatedAt: stamp }))
+    await this.repo.upsertUserWords(rows, stamp)
+  }
+
+  review(req: ReviewRequest): Promise<ReviewResponse> {
+    return this.repo.transaction(async () => {
+      const replay = await this.repo.getReviewLog(req.clientId)
       if (replay) return this.replay(replay)
       this.content.require(req.wordId)
-      const prev = this.repo.getUserWord(req.wordId)
-      const userWord = this.applyGrade(prev, req)
-      this.repo.insertReviewLog(this.toLog(req), this.clock.iso())
-      const date = DateUtil.iso(new Date(req.at))
-      const dayStat = this.days.bump(date, {
-        isNew: this.isNewCard(prev),
-        dueLeft: this.planner.dueIds(this.repo.listUserWords(), date).length,
-        dailyNew: this.settings.get().dailyNew,
-      })
-      return { userWord, dayStat }
+      const prev = await this.repo.getUserWord(req.wordId)
+      const userWord = await this.applyGrade(prev, req)
+      await this.repo.insertReviewLog(this.toLog(req), this.clock.iso())
+      return { userWord, dayStat: await this.bumpDay(prev, req) }
     })
   }
 
-  updateDay(req: DayUpdateRequest) {
+  updateDay(req: DayUpdateRequest): Promise<DayStat> {
     const { date, ...patch } = req
     return this.days.set(date, patch)
   }
 
-  private replay(log: ReviewLog): ReviewResponse {
-    const userWord = this.repo.getUserWord(log.wordId) as UserWord
-    return { userWord, dayStat: this.days.get(DateUtil.iso(new Date(log.at))) }
+  private async bumpDay(prev: UserWord | null, req: ReviewRequest): Promise<DayStat> {
+    const date = DateUtil.iso(new Date(req.at))
+    const dueLeft = this.planner.dueIds(await this.repo.listUserWords(), date).length
+    return this.days.bump(date, {
+      isNew: this.isNewCard(prev), dueLeft, dailyNew: (await this.settings.get()).dailyNew,
+    })
   }
 
-  private applyGrade(prev: UserWord | null, req: ReviewRequest): UserWord {
+  private async replay(log: ReviewLog): Promise<ReviewResponse> {
+    const userWord = (await this.repo.getUserWord(log.wordId)) as UserWord
+    return { userWord, dayStat: await this.days.get(DateUtil.iso(new Date(log.at))) }
+  }
+
+  private async applyGrade(prev: UserWord | null, req: ReviewRequest): Promise<UserWord> {
     if (prev && prev.updatedAt > req.at) return prev
     const started = prev && prev.status !== Status.Unknown
     const card = started ? prev : CardFactory.learning(new Date(req.at))
@@ -84,7 +93,7 @@ export class ProgressManager {
     const row: UserWord = {
       ...next, wordId: req.wordId, firstSeenAt: prev?.firstSeenAt ?? req.at, updatedAt: req.at,
     }
-    this.repo.upsertUserWord(row, this.clock.iso())
+    await this.repo.upsertUserWord(row, this.clock.iso())
     return row
   }
 
@@ -101,10 +110,10 @@ export class ProgressManager {
     return log
   }
 
-  private save(wordId: string, card: Card, firstSeenAt?: string): UserWord {
+  private async save(wordId: string, card: Card, firstSeenAt?: string): Promise<UserWord> {
     const row: UserWord = { ...card, wordId, updatedAt: this.clock.iso() }
     if (firstSeenAt) row.firstSeenAt = firstSeenAt
-    this.repo.upsertUserWord(row, row.updatedAt)
+    await this.repo.upsertUserWord(row, row.updatedAt)
     return row
   }
 }

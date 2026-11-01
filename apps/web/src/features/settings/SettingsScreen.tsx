@@ -7,6 +7,7 @@ import { Typo } from '../../design/typography'
 import { RoutePath } from '../../app/routes'
 import { useTheme } from '../../app/theme/useTheme'
 import { useAppStore } from '../../store'
+import { AccountCard } from '../auth/AccountCard'
 import { Notice, NoticeTone, SettingsCopy, SettingsFiles } from './SettingsSupport'
 import { SettingsTestId } from './SettingsTestId'
 import { FontSize, FontWeight, Gap, Inset, Layer, Leading, Radius, Size } from '../../design/scale'
@@ -223,6 +224,7 @@ export function SettingsScreen() {
       <TopBar backLabel={SettingsCopy.BACK} backTestId={SettingsTestId.Back} onBack={() => navigate(RoutePath.Progress)} />
       <div style={BODY}>
         <span style={{ font: Typo.sans(FontWeight.Semibold, FontSize.F22, Leading.L28) }}>{SettingsCopy.TITLE}</span>
+        <AccountCard />
         <PreferencesCard />
         <DataCard report={setNotice} />
         <NoticeLine notice={notice} />

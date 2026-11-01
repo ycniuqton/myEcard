@@ -16,37 +16,37 @@ export class GoalRule {
 export class DayStatManager {
   constructor(private readonly repo: ProgressRepository, private readonly clock: Clock) {}
 
-  get(date: string): DayStat {
-    return this.repo.getDayStat(date) ?? { date, newLearned: 0, reviewed: 0, goalMet: false }
+  async get(date: string): Promise<DayStat> {
+    return (await this.repo.getDayStat(date)) ?? { date, newLearned: 0, reviewed: 0, goalMet: false }
   }
 
-  bump(date: string, bump: DayBump): DayStat {
-    const base = this.get(date)
+  async bump(date: string, bump: DayBump): Promise<DayStat> {
+    const base = await this.get(date)
     const next: DayStat = {
       ...base,
       newLearned: base.newLearned + (bump.isNew ? 1 : 0),
       reviewed: base.reviewed + (bump.isNew ? 0 : 1),
     }
     next.goalMet = base.goalMet || GoalRule.isMet(next, bump.dueLeft, bump.dailyNew)
-    this.repo.upsertDayStat(next, this.clock.iso())
+    await this.repo.upsertDayStat(next, this.clock.iso())
     return next
   }
 
-  set(date: string, patch: Partial<Omit<DayStat, 'date'>>): DayStat {
-    const next: DayStat = { ...this.get(date), ...patch }
-    this.repo.upsertDayStat(next, this.clock.iso())
+  async set(date: string, patch: Partial<Omit<DayStat, 'date'>>): Promise<DayStat> {
+    const next: DayStat = { ...(await this.get(date)), ...patch }
+    await this.repo.upsertDayStat(next, this.clock.iso())
     return next
   }
 
-  merge(incoming: DayStat): DayStat {
-    const base = this.get(incoming.date)
+  async merge(incoming: DayStat): Promise<DayStat> {
+    const base = await this.get(incoming.date)
     const next: DayStat = {
       date: incoming.date,
       newLearned: Math.max(base.newLearned, incoming.newLearned),
       reviewed: Math.max(base.reviewed, incoming.reviewed),
       goalMet: base.goalMet || incoming.goalMet,
     }
-    this.repo.upsertDayStat(next, this.clock.iso())
+    await this.repo.upsertDayStat(next, this.clock.iso())
     return next
   }
 }

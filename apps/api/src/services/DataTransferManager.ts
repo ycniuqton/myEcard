@@ -9,7 +9,7 @@ export class SnapshotFormat {
   static readonly VERSION = 1
 }
 
-/** Exports, imports and resets the whole progress snapshot. */
+/** Exports, imports and resets the whole progress snapshot of one user. */
 export class DataTransferManager {
   constructor(
     private readonly repo: ProgressRepository,
@@ -19,33 +19,33 @@ export class DataTransferManager {
     private readonly clock: Clock,
   ) {}
 
-  export(): ExportSnapshot {
+  async export(): Promise<ExportSnapshot> {
     return {
       version: SnapshotFormat.VERSION,
       exportedAt: this.clock.iso(),
-      settings: this.settings.get(),
-      userWords: this.repo.listUserWords(),
-      reviewLogs: this.repo.listReviewLogs(),
-      dayStats: this.repo.listDayStats(),
+      settings: await this.settings.get(),
+      userWords: await this.repo.listUserWords(),
+      reviewLogs: await this.repo.listReviewLogs(),
+      dayStats: await this.repo.listDayStats(),
     }
   }
 
-  import(snapshot: ImportRequest): StateResponse {
-    this.repo.transaction(() => {
-      this.repo.clearProgress()
+  async import(snapshot: ImportRequest): Promise<StateResponse> {
+    await this.repo.transaction(async () => {
+      await this.repo.clearProgress()
       const stamp = this.clock.iso()
-      snapshot.userWords.forEach(w => this.repo.upsertUserWord(w, stamp))
-      snapshot.reviewLogs.forEach(l => this.repo.insertReviewLog(l, stamp))
-      snapshot.dayStats.forEach(d => this.repo.upsertDayStat(d, stamp))
-      this.settings.replace(snapshot.settings, stamp)
+      await this.repo.upsertUserWords(snapshot.userWords, stamp)
+      for (const l of snapshot.reviewLogs) await this.repo.insertReviewLog(l, stamp)
+      for (const d of snapshot.dayStats) await this.repo.upsertDayStat(d, stamp)
+      await this.settings.replace(snapshot.settings, stamp)
     })
     return this.progress.state()
   }
 
-  reset(): StateResponse {
-    this.repo.transaction(() => {
-      this.repo.clearProgress()
-      this.settings.markPlacementDone(false)
+  async reset(): Promise<StateResponse> {
+    await this.repo.transaction(async () => {
+      await this.repo.clearProgress()
+      await this.settings.markPlacementDone(false)
     })
     return this.progress.state()
   }

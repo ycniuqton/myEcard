@@ -20,17 +20,17 @@ export class PlacementManager {
     private readonly engine = new AdaptivePlacementEngine(),
   ) {}
 
-  apply(submission: PlacementSubmission): PlacementResponse {
+  async apply(submission: PlacementSubmission): Promise<PlacementResponse> {
     this.validateLevel(submission.level)
     const tapped = submission.tappedKnownIds.filter(id => this.content.has(id))
     const ids = this.engine.knownIdsForLevel(this.content.words, submission.level, tapped)
-    this.repo.transaction(() => {
-      this.clearAssumed()
-      ids.forEach(id => this.assume(id))
-      this.logProbes(submission)
-      this.settings.markPlacementDone(true)
+    await this.repo.transaction(async () => {
+      await this.clearAssumed()
+      await this.assumeAll(ids)
+      await this.logProbes(submission)
+      await this.settings.markPlacementDone(true)
     })
-    return { knownCount: ids.length, state: this.progress.state() }
+    return { knownCount: ids.length, state: await this.progress.state() }
   }
 
   private validateLevel(level: number): void {
@@ -39,26 +39,29 @@ export class PlacementManager {
     }
   }
 
-  private clearAssumed(): void {
-    this.repo
-      .listUserWords()
-      .filter(w => w.assumed && w.status === Status.Known)
-      .forEach(w => this.progress.reset(w.wordId))
+  private async clearAssumed(): Promise<void> {
+    const assumed = (await this.repo.listUserWords()).filter(w => w.assumed && w.status === Status.Known)
+    await this.progress.resetMany(assumed.map(w => w.wordId))
   }
 
-  private assume(wordId: string): void {
-    const existing = this.repo.getUserWord(wordId)
-    if (existing && existing.status !== Status.Unknown) return
+  private async assumeAll(ids: string[]): Promise<void> {
+    const existing = new Map((await this.repo.listUserWords()).map(w => [w.wordId, w]))
     const now = this.clock.now()
-    const due = AssumedSchedule.due(this.content.require(wordId).rank, DateUtil.iso(now))
-    const row: UserWord = { ...CardFactory.assumedKnown(now), due, wordId, updatedAt: now.toISOString() }
-    this.repo.upsertUserWord(row, row.updatedAt)
+    const rows = ids
+      .filter(id => (existing.get(id)?.status ?? Status.Unknown) === Status.Unknown)
+      .map(id => this.assumedRow(id, now))
+    await this.repo.upsertUserWords(rows, now.toISOString())
   }
 
-  private logProbes(submission: PlacementSubmission): void {
+  private assumedRow(wordId: string, now: Date): UserWord {
+    const due = AssumedSchedule.due(this.content.require(wordId).rank, DateUtil.iso(now))
+    return { ...CardFactory.assumedKnown(now), due, wordId, updatedAt: now.toISOString() }
+  }
+
+  private async logProbes(submission: PlacementSubmission): Promise<void> {
     const at = this.clock.iso()
     const answers = submission.probes.flatMap(p => p.answers).filter(a => this.content.has(a.wordId))
-    answers.forEach(a => this.repo.insertReviewLog(this.toLog(a, at), at))
+    for (const a of answers) await this.repo.insertReviewLog(this.toLog(a, at), at)
   }
 
   private toLog(answer: BandAnswer, at: string): ReviewLog {

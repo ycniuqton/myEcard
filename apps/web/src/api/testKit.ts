@@ -1,9 +1,10 @@
 import 'fake-indexeddb/auto'
 import {
   Cefr, ExampleSource, ListId, Theme, Voice,
-  type DayStat, type PlacementSubmission, type ReviewLog, type Settings, type SyncPayload, type UserWord, type Word,
+  type DayStat, type ExportSnapshot, type PlacementSubmission, type ReviewLog, type Settings, type SyncPayload, type UserWord, type Word,
 } from '@wordmap/shared'
 import { ApiClient } from './ApiClient'
+import type { AuthTokenProvider } from './AuthTokenProvider'
 import { DefaultSettings, OfflineStore } from './OfflineStore'
 import { SyncEngine } from './SyncEngine'
 import type { EnvHandlers, SyncEnvironment } from './SyncEnvironment'
@@ -89,9 +90,18 @@ export class FakeServer {
   down = false
   words = TestKit.words()
   contentVersion = 'v1'
+  imports: ExportSnapshot[] = []
+  tokens: Array<string | null> = []
+  accept: ((token: string | null) => boolean) | null = null
 
   fetch: typeof fetch = async (input, init) => {
     const url = String(input)
+    const token = new Headers(init?.headers).get('Authorization')?.replace(/^Bearer /, '') ?? null
+    this.tokens.push(token)
+    const isPublic = url.endsWith('/health') || url.includes('/content/')
+    if (this.accept && !isPublic && !this.accept(token)) {
+      return this.json({ error: { code: 'UNAUTHENTICATED', message: 'Sign in required' } }, 401)
+    }
     if (this.down) throw new TypeError('Failed to fetch')
     const failure = this.failNext.shift()
     if (failure === 'network') throw new TypeError('Failed to fetch')
@@ -104,14 +114,14 @@ export class FakeServer {
     return res
   }
 
-  client(): ApiClient {
-    return new ApiClient({ baseUrl: '/api', fetchImpl: this.fetch })
+  client(auth?: AuthTokenProvider): ApiClient {
+    return new ApiClient({ baseUrl: '/api', fetchImpl: this.fetch, auth })
   }
 
-  engine(store: OfflineStore, env: FakeEnv, ids?: () => string): SyncEngine {
+  engine(store: OfflineStore, env: FakeEnv, ids?: () => string, auth?: AuthTokenProvider): SyncEngine {
     let n = 0
     return new SyncEngine({
-      store, api: this.client(), env, clock: () => TestKit.NOW, newId: ids ?? (() => `id-${n++}`),
+      store, api: this.client(auth), env, clock: () => TestKit.NOW, newId: ids ?? (() => `id-${n++}`),
     })
   }
 
@@ -120,6 +130,14 @@ export class FakeServer {
     if (url.endsWith('/content/words')) return this.json({ contentVersion: this.contentVersion, words: this.words })
     if (url.endsWith('/state')) return this.json(this.state())
     if (url.endsWith('/sync')) return this.json(this.sync(JSON.parse(String(init?.body)) as SyncPayload))
+    if (url.endsWith('/import')) {
+      const snapshot = JSON.parse(String(init?.body)) as ExportSnapshot
+      this.imports.push(snapshot)
+      snapshot.userWords.forEach(u => this.userWords.set(u.wordId, u))
+      snapshot.dayStats.forEach(d => this.dayStats.set(d.date, d))
+      this.settings = snapshot.settings
+      return this.json({ ok: true })
+    }
     if (url.endsWith('/placement')) {
       this.placements.push(JSON.parse(String(init?.body)) as PlacementSubmission)
       return this.json({ knownCount: 0, state: this.state() })

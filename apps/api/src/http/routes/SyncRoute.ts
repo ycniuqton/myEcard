@@ -6,6 +6,6 @@ import { Schemas } from '../Schemas'
 /** POST /sync. */
 export class SyncRoute extends BaseRoute {
   register(api: FastifyInstance): void {
-    api.post('/sync', async req => this.c.sync.sync(this.parse(Schemas.sync, req.body) as SyncPayload))
+    api.post('/sync', async req => this.scope(req).sync.sync(this.parse(Schemas.sync, req.body) as SyncPayload))
   }
 }

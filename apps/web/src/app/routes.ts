@@ -14,6 +14,10 @@ export enum RoutePath {
   Welcome = '/welcome',
   Credits = '/credits',
   DesignPreview = '/design-preview',
+  Login = '/login',
+  SignUp = '/signup',
+  Forgot = '/forgot',
+  Reset = '/reset',
 }
 
 /** Decides tab bar visibility and which tab a pathname belongs to. */
@@ -36,6 +40,7 @@ export class TabPolicy {
 
   private static readonly TABLESS_PREFIXES: readonly string[] = [
     RoutePath.Session, RoutePath.Summary, RoutePath.Placement, RoutePath.Welcome,
+    RoutePath.Login, RoutePath.SignUp, RoutePath.Forgot, RoutePath.Reset,
   ]
 
   static hidesTabs(pathname: string): boolean {

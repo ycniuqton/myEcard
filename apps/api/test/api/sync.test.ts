@@ -136,10 +136,8 @@ describe('content fallback', () => {
   it('serves seed-built content when words.v1.json is missing', async () => {
     const empty = mkdtempSync(join(tmpdir(), 'wm-content-'))
     writeFileSync(join(empty, 'unrelated.txt'), 'x')
-    const { AppConfig, ConfigDefaults } = await import('../../src/config/AppConfig')
     const { createApp } = await import('../../src/app')
-    const config = AppConfig.fromEnv({}, { dbPath: ConfigDefaults.MEMORY_DB, contentDir: empty, port: 0 })
-    const seeded = await createApp(config)
+    const seeded = await createApp(TestApp.config({ contentDir: empty }))
     const res = await TestApp.json<{ contentVersion: string }>(seeded, 'GET', '/api/health')
     expect(res.body.contentVersion).toBe('seed')
     await seeded.close()

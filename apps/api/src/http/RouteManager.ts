@@ -1,6 +1,7 @@
 import type { FastifyInstance } from 'fastify'
 import type { Container } from '../Container'
 import type { BaseRoute } from './BaseRoute'
+import type { AuthGuard } from './auth/AuthGuard'
 import { ContentRoute } from './routes/ContentRoute'
 import { DataTransferRoute } from './routes/DataTransferRoute'
 import { HealthRoute } from './routes/HealthRoute'
@@ -18,11 +19,15 @@ export class ApiPrefix {
   static readonly VALUE = '/api'
 }
 
-/** Instantiates every route class and registers them under /api. */
+export enum ApiHook {
+  PreHandler = 'preHandler',
+}
+
+/** Instantiates every route class and registers them under /api behind the auth guard. */
 export class RouteManager {
   private readonly routes: BaseRoute[]
 
-  constructor(container: Container) {
+  constructor(container: Container, private readonly guard: AuthGuard) {
     this.routes = [
       HealthRoute, ContentRoute, SearchRoute, StateRoute, SettingsRoute, PlacementRoute, WordActionRoute,
       ReviewRoute, SessionRoute, StatsRoute, SyncRoute, DataTransferRoute,
@@ -32,6 +37,7 @@ export class RouteManager {
   registerAll(app: FastifyInstance): void {
     void app.register(
       async api => {
+        api.addHook(ApiHook.PreHandler, this.guard.handle)
         this.routes.forEach(route => route.register(api))
       },
       { prefix: ApiPrefix.VALUE },

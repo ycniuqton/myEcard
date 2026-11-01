@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import {
-  Cefr, DateUtil, Grade, KnowAnswer, PlacementEngine, ReviewMode, SchedulerManager, SessionPlanner, Sm2Strategy,
+  Cefr, DateUtil, ErrorCode, Grade, KnowAnswer, PlacementEngine, ReviewMode, SchedulerManager, SessionPlanner, Sm2Strategy,
   StatsCalculator, Status, StreakCalculator, assumedKnownCard, learningCard, newCard, schedule, bandOf,
   type DayStat, type ReviewLog, type UserWord, type Word,
 } from '../index'
@@ -277,5 +277,11 @@ describe('DateUtil', () => {
     expect(DateUtil.daysBetween('2026-11-02', '2026-10-30')).toBe(-3)
     expect(DateUtil.lastDays('2026-10-30', 3)).toEqual(['2026-10-28', '2026-10-29', '2026-10-30'])
     expect(DateUtil.iso(new Date(2026, 0, 5))).toBe('2026-01-05')
+  })
+})
+
+describe('error codes', () => {
+  it('exposes the UNAUTHENTICATED code for 401 responses', () => {
+    expect(ErrorCode.Unauthenticated).toBe('UNAUTHENTICATED')
   })
 })

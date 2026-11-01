@@ -12,11 +12,11 @@ export class StatsManager {
     private readonly calculator = new StatsCalculator(),
   ) {}
 
-  compute(date?: string): StatsResponse {
+  async compute(date?: string): Promise<StatsResponse> {
     return this.calculator.compute({
-      userWords: this.repo.listUserWords(),
-      dayStats: this.repo.listDayStats(),
-      reviewLogs: this.repo.listReviewLogs(),
+      userWords: await this.repo.listUserWords(),
+      dayStats: await this.repo.listDayStats(),
+      reviewLogs: await this.repo.listReviewLogs(),
       totalWords: this.content.words.length,
       today: date ?? DateUtil.iso(this.clock.now()),
     })

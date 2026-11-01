@@ -1,0 +1,135 @@
+{
+ "version": 1,
+ "exportedAt": "2026-11-01T11:21:12.374Z",
+ "settings": {
+  "dailyNew": 5,
+  "theme": "system",
+  "voice": "us",
+  "activeListId": "ngsl",
+  "placementDone": true
+ },
+ "userWords": [
+  {
+   "wordId": "ngsl:0001",
+   "status": "learning",
+   "assumed": false,
+   "ease": 2.65,
+   "interval": 4,
+   "reps": 2,
+   "lapses": 0,
+   "due": "2026-11-05",
+   "updatedAt": "2026-10-31T18:03:35.831Z",
+   "firstSeenAt": "2026-10-30T02:44:52.206Z"
+  },
+  {
+   "wordId": "ngsl:0002",
+   "status": "learning",
+   "assumed": false,
+   "ease": 2.8,
+   "interval": 4,
+   "reps": 2,
+   "lapses": 0,
+   "due": "2026-11-05",
+   "updatedAt": "2026-10-31T18:03:38.354Z",
+   "firstSeenAt": "2026-10-30T02:44:54.205Z"
+  },
+  {
+   "wordId": "ngsl:0003",
+   "status": "known",
+   "assumed": true,
+   "ease": 2.5,
+   "interval": 30,
+   "reps": 2,
+   "lapses": 0,
+   "due": "2026-12-02",
+   "updatedAt": "2026-10-30T07:34:03.049Z"
+  },
+  {
+   "wordId": "ngsl:0004",
+   "status": "known",
+   "assumed": true,
+   "ease": 2.5,
+   "interval": 30,
+   "reps": 2,
+   "lapses": 0,
+   "due": "2026-12-03",
+   "updatedAt": "2026-10-30T07:34:03.049Z"
+  },
+  {
+   "wordId": "ngsl:0005",
+   "status": "known",
+   "assumed": true,
+   "ease": 2.5,
+   "interval": 30,
+   "reps": 2,
+   "lapses": 0,
+   "due": "2026-12-04",
+   "updatedAt": "2026-10-30T07:34:03.050Z"
+  },
+  {
+   "wordId": "ngsl:0006",
+   "status": "known",
+   "assumed": true,
+   "ease": 2.5,
+   "interval": 30,
+   "reps": 2,
+   "lapses": 0,
+   "due": "2026-12-05",
+   "updatedAt": "2026-10-30T07:34:03.050Z"
+  }
+ ],
+ "reviewLogs": [
+  {
+   "id": "be8701c1-bc2e-4a41-9ba0-a5e5be68869b",
+   "wordId": "ngsl:0001",
+   "at": "2026-10-31T05:01:37.347Z",
+   "mode": "flashcard",
+   "grade": "good",
+   "msTaken": 6971145
+  },
+  {
+   "id": "9f6f6881-a159-4825-b5fa-0511dc7791a5",
+   "wordId": "ngsl:0002",
+   "at": "2026-10-31T05:01:42.562Z",
+   "mode": "flashcard",
+   "grade": "easy",
+   "msTaken": 5190
+  },
+  {
+   "id": "ff23fba0-386e-49e4-be15-cb682dd59560",
+   "wordId": "ngsl:0001",
+   "at": "2026-10-31T18:03:35.831Z",
+   "mode": "flashcard",
+   "grade": "easy",
+   "msTaken": 7021
+  },
+  {
+   "id": "814ecb0d-fdcc-4b23-bae6-b5cce7aa68d0",
+   "wordId": "ngsl:0002",
+   "at": "2026-10-31T18:03:38.354Z",
+   "mode": "flashcard",
+   "grade": "easy",
+   "msTaken": 2491
+  }
+ ],
+ "dayStats": [
+  {
+   "date": "2026-10-30",
+   "newLearned": 10,
+   "reviewed": 0,
+   "goalMet": true
+  },
+  {
+   "date": "2026-10-31",
+   "newLearned": 5,
+   "reviewed": 2,
+   "goalMet": true
+  },
+  {
+   "date": "2026-11-01",
+   "newLearned": 60,
+   "reviewed": 2,
+   "goalMet": true
+  }
+ ]
+}

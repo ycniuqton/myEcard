@@ -69,16 +69,51 @@ npm test            # shared, api (in-memory SQLite), web unit tests
 npm run test:e2e    # Playwright against a real API + built web (needs: npx playwright install chromium)
 ```
 
+## Web accounts (Supabase)
+
+The web app signs users in with Supabase email and password and sends `Authorization: Bearer <access_token>` on
+every API call except health and content. Build-time env (apps/web, e.g. `.env.local`, never committed):
+
+| Variable | Meaning |
+| --- | --- |
+| VITE_AUTH_MODE | `supabase` (default), `fake` (in-browser users and fake tokens, used by e2e and tests, no network) or `none` (no login, legacy `wordmap` IndexedDB, used by dev tests and the main e2e suite) |
+| VITE_SUPABASE_URL | project URL (supabase mode) |
+| VITE_SUPABASE_PUBLISHABLE_KEY | publishable (anon) key (supabase mode) |
+
+Each user has an IndexedDB named `wordmap-<userId>`; log out clears it. A 401 triggers one token refresh and retry,
+then sign out (unsynced changes stay in that user cache until they log in again). On the first login on a device with
+legacy progress and an empty account, a one-time prompt offers to upload it. The e2e suite builds the web app per server
+(`apps/web/dist-e2e-<port>`); the `auth-fake` project runs with `VITE_AUTH_MODE=fake` against an in-test API mock.
+
 ## Environment variables (API)
 
 | Var | Default | Meaning |
 | --- | --- | --- |
 | PORT | 3001 | listen port |
 | HOST | 0.0.0.0 | listen host |
-| DB_PATH | apps/api/storage/wordmap.db | SQLite file |
-| CONTENT_DIR | apps/api/content | folder with words.v1.json, lists.json, credits.json |
+| DATABASE_URL | unset | Postgres connection string (Supabase pooler, port 6543). Unset uses embedded PGlite. Secret: never commit |
+| PGLITE_DIR | apps/api/storage/pglite | embedded database folder, or `:memory:` |
+| AUTH_MODE | `supabase` when DATABASE_URL is set, else `none` | `supabase` verifies Supabase JWTs, `none` uses one fixed dev user |
+| SUPABASE_URL | unset | `https://<ref>.supabase.co`, needed for JWT verification |
+| DEV_USER_ID | fixed dev uuid | user id in `none` mode |
+| CONTENT_DIR | apps/api/content | folder with words.v2.json, lists.json, credits.json |
 | WEB_DIST | apps/web/dist | built web app served with SPA fallback |
 | CORS_ORIGIN | * | CORS origin for development |
+
+## Deploy on Vercel + Supabase (free tiers)
+
+1. Supabase: create a project, then apply the schema once with `DATABASE_URL=<pooler url> npm run migrate -w @wordmap/api`
+   (or paste `apps/api/src/db/migrations/*.sql` in order into the SQL Editor).
+2. Supabase Authentication, URL Configuration: add your Vercel URL as Site URL and `<your-url>/reset` as a redirect URL.
+3. Vercel: import the GitHub repo, leave Root Directory empty (repo root). `vercel.json` runs `scripts/build-vercel.mjs`,
+   which builds the web app and bundles the API into one function (`/api/*`).
+4. Vercel environment variables: `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` (public), `SUPABASE_URL`,
+   `AUTH_MODE=supabase`, and `DATABASE_URL` (secret, the Supabase transaction pooler string).
+5. Load your old progress: log in, then Settings, Import, and pick the JSON from the old server's `/api/export`.
+
+Free-tier limits to know: Supabase built-in email is limited to a few messages per hour (connect SMTP such as Resend before
+real sign-ups); free projects pause after about a week without activity; the database is capped at 500 MB (roughly a few
+hundred active learners); Vercel Hobby is for non-commercial use.
 
 ## Credits
 

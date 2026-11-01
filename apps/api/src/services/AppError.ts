@@ -4,6 +4,7 @@ export class HttpStatus {
   static readonly OK = 200
   static readonly NOT_MODIFIED = 304
   static readonly BAD_REQUEST = 400
+  static readonly UNAUTHORIZED = 401
   static readonly NOT_FOUND = 404
   static readonly CONFLICT = 409
   static readonly INTERNAL = 500
@@ -17,6 +18,10 @@ export class AppError extends Error {
 
   static notFound(message: string): AppError {
     return new AppError(ErrorCode.NotFound, message, HttpStatus.NOT_FOUND)
+  }
+
+  static unauthenticated(message: string): AppError {
+    return new AppError(ErrorCode.Unauthenticated, message, HttpStatus.UNAUTHORIZED)
   }
 
   static validation(message: string): AppError {

@@ -61,5 +61,5 @@ export default defineConfig({
   ],
   server: { proxy: { '/api': API_TARGET } },
   preview: { proxy: { '/api': API_TARGET } },
-  test: { environment: 'node', include: ['src/**/*.test.ts'] },
+  test: { environment: 'node', include: ['src/**/*.test.ts'], env: { VITE_AUTH_MODE: 'none' } },
 })

@@ -6,8 +6,9 @@ import type {
 } from '@wordmap/shared'
 import { ApiConfig, ApiErrorKind, ApiRoutes, HttpMethod, type WordAction } from './ApiConfig'
 import { ApiError } from './ApiError'
+import type { AuthTokenProvider } from './AuthTokenProvider'
 
-export type ApiClientOptions = { baseUrl?: string; timeoutMs?: number; fetchImpl?: typeof fetch }
+export type ApiClientOptions = { baseUrl?: string; timeoutMs?: number; fetchImpl?: typeof fetch; auth?: AuthTokenProvider }
 
 type RequestSpec = { method: HttpMethod; path: string; body?: unknown }
 
@@ -16,12 +17,14 @@ export class ApiClient {
   private readonly baseUrl: string
   private readonly timeoutMs: number
   private readonly fetchImpl: typeof fetch
+  private readonly auth?: AuthTokenProvider
 
   constructor(options: ApiClientOptions = {}) {
     const envBase = import.meta.env?.VITE_API_BASE as string | undefined
     this.baseUrl = (options.baseUrl ?? envBase ?? ApiConfig.DEFAULT_BASE).replace(/\/$/, '')
     this.timeoutMs = options.timeoutMs ?? ApiConfig.TIMEOUT_MS
     this.fetchImpl = options.fetchImpl ?? ((input, init) => fetch(input, init))
+    this.auth = options.auth
   }
 
   health = () => this.get<HealthResponse>(ApiRoutes.HEALTH)
@@ -61,12 +64,31 @@ export class ApiClient {
   }
 
   private async send<T>(spec: RequestSpec): Promise<T> {
-    const res = await this.fetchWithTimeout(spec)
+    const res = await this.execute(spec)
     if (!res.ok) throw await this.httpError(res)
     return this.parse<T>(res)
   }
 
-  private async fetchWithTimeout(spec: RequestSpec): Promise<Response> {
+  private async execute(spec: RequestSpec): Promise<Response> {
+    const first = await this.fetchWithTimeout(spec, await this.token(spec))
+    const guarded = this.auth && !ApiRoutes.isPublic(spec.path)
+    if (!guarded || first.status !== ApiConfig.HTTP_UNAUTHORIZED) return first
+    return this.retryAfterRefresh(spec, first)
+  }
+
+  private async retryAfterRefresh(spec: RequestSpec, first: Response): Promise<Response> {
+    const renewed = (await this.auth?.refresh()) === true
+    const second = renewed ? await this.fetchWithTimeout(spec, await this.token(spec)) : first
+    if (second.status === ApiConfig.HTTP_UNAUTHORIZED) this.auth?.onUnauthenticated()
+    return second
+  }
+
+  private async token(spec: RequestSpec): Promise<string | null> {
+    if (!this.auth || ApiRoutes.isPublic(spec.path)) return null
+    return this.auth.accessToken()
+  }
+
+  private async fetchWithTimeout(spec: RequestSpec, token: string | null): Promise<Response> {
     const controller = new AbortController()
     let timedOut = false
     const timer = setTimeout(() => {
@@ -74,7 +96,7 @@ export class ApiClient {
       controller.abort()
     }, this.timeoutMs)
     try {
-      return await this.fetchImpl(`${this.baseUrl}${spec.path}`, this.init(spec, controller.signal))
+      return await this.fetchImpl(`${this.baseUrl}${spec.path}`, this.init(spec, controller.signal, token))
     } catch (cause) {
       throw this.transportError(cause, timedOut)
     } finally {
@@ -82,12 +104,15 @@ export class ApiClient {
     }
   }
 
-  private init(spec: RequestSpec, signal: AbortSignal): RequestInit {
+  private init(spec: RequestSpec, signal: AbortSignal, token: string | null): RequestInit {
     const hasBody = spec.body !== undefined
+    const headers: Record<string, string> = {}
+    if (hasBody) headers[ApiConfig.HEADER_CONTENT_TYPE] = ApiConfig.JSON_TYPE
+    if (token) headers[ApiConfig.HEADER_AUTHORIZATION] = `${ApiConfig.BEARER} ${token}`
     return {
       method: spec.method,
       signal,
-      headers: hasBody ? { [ApiConfig.HEADER_CONTENT_TYPE]: ApiConfig.JSON_TYPE } : undefined,
+      headers: Object.keys(headers).length ? headers : undefined,
       body: hasBody ? JSON.stringify(spec.body) : undefined,
     }
   }

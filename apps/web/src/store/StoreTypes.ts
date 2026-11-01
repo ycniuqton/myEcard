@@ -58,6 +58,9 @@ export type StoreActions = {
   exportJson: () => Promise<string>
   importData: (snapshot: ExportSnapshot | string) => Promise<void>
   resetProgress: () => Promise<void>
+  bindDatabase: (name: string | null) => Promise<void>
+  unbindDatabase: (wipe: boolean) => Promise<void>
+  flushPending: () => Promise<void>
 }
 
 export type AppState = StoreData & StoreActions

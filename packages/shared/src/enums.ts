@@ -74,4 +74,5 @@ export enum ErrorCode {
   NotFound = 'not_found',
   Conflict = 'conflict',
   Internal = 'internal_error',
+  Unauthenticated = 'UNAUTHENTICATED',
 }

@@ -16,3 +16,5 @@ apps/web/e2e/.tmp-*/
 *.db
 *.db-shm
 *.db-wal
+apps/web/dist-e2e-*/
+.vercel/

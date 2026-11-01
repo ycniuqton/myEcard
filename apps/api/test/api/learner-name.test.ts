@@ -1,16 +1,16 @@
-import BetterSqlite3 from 'better-sqlite3'
 import type { FastifyInstance } from 'fastify'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { SettingsLimits, type ExportSnapshot, type Settings, type StateResponse, type SyncResponse } from '@wordmap/shared'
-import { MigrationRegistry } from '../../src/db/migrations'
-import { V003LearnerName } from '../../src/db/migrations/V003LearnerName'
+import { MigrationFiles } from '../../src/db/MigrationFiles'
 import { Migrator } from '../../src/db/Migrator'
-import { TestApp } from './TestApp'
+import { PgliteClient } from '../../src/db/PgliteClient'
+import { TestApp, UserFixtures } from './TestApp'
 
 const EPOCH = '1970-01-01T00:00:00.000Z'
 const SETTINGS_PATH = '/api/settings'
 const STATE_PATH = '/api/state'
 const OLD_SCHEMA_VERSION = 2
+const V003_VERSION = 3
 const NAME = 'Linh'
 
 let app: FastifyInstance
@@ -76,17 +76,28 @@ describe('learnerName setting', () => {
   })
 })
 
+class UpToVersion extends MigrationFiles {
+  constructor(private readonly max: number) {
+    super()
+  }
+
+  load() {
+    return super.load().filter(m => m.version <= this.max)
+  }
+}
+
 describe('migration V003', () => {
-  it('adds learner_name to an existing v2 database and keeps current settings', () => {
-    const db = new BetterSqlite3(':memory:')
-    const all = MigrationRegistry.all()
-    new Migrator(db, all.filter(m => m.version <= OLD_SCHEMA_VERSION)).run()
-    db.prepare(
-      "INSERT INTO settings (user_id, daily_new, theme, voice, active_list_id, placement_done, updated_at, synced_at) VALUES ('me', 7, 'dark', 'us', 'ngsl', 1, 'a', 'b')",
-    ).run()
-    expect(new Migrator(db, all).run()).toBe(V003LearnerName.VERSION)
-    const row = db.prepare("SELECT daily_new, learner_name FROM settings WHERE user_id = 'me'").get()
-    expect(row).toEqual({ daily_new: 7, learner_name: '' })
-    db.close()
+  it('adds learner_name to an existing v2 database and keeps current settings', async () => {
+    const db = await PgliteClient.open()
+    await db.exec(new MigrationFiles().authStub())
+    await new Migrator(db, new UpToVersion(OLD_SCHEMA_VERSION)).run()
+    await db.query(
+      "INSERT INTO settings (user_id, daily_new, theme, voice, active_list_id, placement_done, updated_at, synced_at) VALUES ($1, 7, 'dark', 'us', 'ngsl', true, 'a', 'b')",
+      [UserFixtures.ALICE],
+    )
+    expect(await new Migrator(db).run()).toBeGreaterThanOrEqual(V003_VERSION)
+    const row = await db.query('SELECT daily_new, learner_name FROM settings WHERE user_id = $1', [UserFixtures.ALICE])
+    expect(row.rows).toEqual([{ daily_new: 7, learner_name: '' }])
+    await db.close()
   })
 })

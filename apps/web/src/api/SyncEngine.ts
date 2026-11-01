@@ -58,9 +58,7 @@ export class SyncEngine {
   private cancelRetry: (() => void) | null = null
   private unlisten: (() => void) | null = null
   private markHydrated: () => void = () => undefined
-  private readonly hydrated = new Promise<void>(resolve => {
-    this.markHydrated = resolve
-  })
+  private hydrated: Promise<void> = this.newHydration()
 
   constructor(deps: SyncDeps) {
     this.store = deps.store
@@ -74,6 +72,22 @@ export class SyncEngine {
   }
 
   status = (): SyncStatus => this.current
+
+  /** Stops timers and waits for in-flight work so the store can safely switch accounts. */
+  async quiesce(): Promise<void> {
+    this.stop()
+    await this.flushing?.catch(() => undefined)
+    await this.chain
+  }
+
+  /** Forgets all per-account runtime state; call after quiesce and before binding another database. */
+  reset(): void {
+    this.failures = 0
+    this.rerun = false
+    this.hydrated = this.newHydration()
+    this.current = { online: this.env.isOnline(), pending: 0, syncing: false, lastSyncAt: null, lastError: null }
+    this.statusListeners.forEach(l => l(this.current))
+  }
 
   subscribe(listener: (s: SyncStatus) => void): () => void {
     this.statusListeners.add(listener)
@@ -315,10 +329,17 @@ export class SyncEngine {
   }
 
   private async handleFailure(error: unknown, entries: OutboxEntry[]): Promise<void> {
+    this.fail(error)
+    if (error instanceof ApiError && error.isUnauthenticated) return
     const rejected = error instanceof ApiError && !error.isRetryable
     if (rejected) await this.dropPoison(entries)
-    this.fail(error)
     this.scheduleRetry()
+  }
+
+  private newHydration(): Promise<void> {
+    return new Promise<void>(resolve => {
+      this.markHydrated = resolve
+    })
   }
 
   private async dropPoison(entries: OutboxEntry[]): Promise<void> {

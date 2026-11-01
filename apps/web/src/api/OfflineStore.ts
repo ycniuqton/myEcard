@@ -69,11 +69,44 @@ class WordMapDb extends Dexie {
 /** IndexedDB cache: words by content version, progress rows, settings, outbox and sync cursor. */
 export class OfflineStore {
   static readonly DB_NAME = 'wordmap'
+  static readonly UNBOUND = 'Offline store has no open database (not signed in)'
   static readonly EPOCH = '1970-01-01T00:00:00.000Z'
-  private readonly db: WordMapDb
+  private current: WordMapDb | null
+  private currentName: string | null
 
-  constructor(name: string = OfflineStore.DB_NAME) {
-    this.db = new WordMapDb(name)
+  /** Pass null to stay unbound until use(name) is called (accounts open their db after sign-in). */
+  constructor(name: string | null = OfflineStore.DB_NAME) {
+    this.currentName = name
+    this.current = name === null ? null : new WordMapDb(name)
+  }
+
+  get name(): string | null {
+    return this.currentName
+  }
+
+  use(name: string): void {
+    if (name === this.currentName && this.current) return
+    this.current?.close()
+    this.currentName = name
+    this.current = new WordMapDb(name)
+  }
+
+  close(): void {
+    this.current?.close()
+    this.current = null
+    this.currentName = null
+  }
+
+  async destroy(): Promise<void> {
+    const db = this.current
+    this.current = null
+    this.currentName = null
+    await db?.delete()
+  }
+
+  private get db(): WordMapDb {
+    if (!this.current) throw new Error(OfflineStore.UNBOUND)
+    return this.current
   }
 
   async loadWords(): Promise<WordCacheRow | null> {

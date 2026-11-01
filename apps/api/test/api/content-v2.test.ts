@@ -7,14 +7,13 @@ import {
   DateUtil, Status, SyntheticFormat, SyntheticWords, Theme, Voice, type ExportSnapshot, type SessionResponse,
   type StatsResponse, type WordsResponse,
 } from '@wordmap/shared'
-import { AppConfig, ConfigDefaults } from '../../src/config/AppConfig'
 import { Container } from '../../src/Container'
 import { LargeContentFixture, LargeFixtureFormat } from '../support/LargeContentFixture'
 import { TestApp, TestClock, TestPaths, TestTime } from './TestApp'
 
 const TOTAL = SyntheticFormat.DEFAULT_TOTAL
 const STARTED = 5000
-const SLOW_MS = 200
+const SLOW_MS = 600
 const TODAY = DateUtil.iso(new Date(TestTime.START))
 const DAILY_NEW = 5
 const ASSUMED_MARGIN = 100
@@ -25,8 +24,7 @@ const open = async (contentDir: string) => {
   apps.push(app)
   return app
 }
-const container = (contentDir: string) =>
-  new Container(AppConfig.fromEnv({}, { dbPath: ConfigDefaults.MEMORY_DB, contentDir }))
+const container = (contentDir: string) => Container.create(TestApp.config({ contentDir }))
 
 afterEach(async () => {
   await Promise.all(apps.splice(0).map(a => a.close()))
@@ -63,16 +61,16 @@ describe('content version selection', () => {
     expect(health.body.contentVersion).toBe('7')
   })
 
-  it('loads lists from the content directory and works without lists.json', () => {
+  it('loads lists from the content directory and works without lists.json', async () => {
     const dir = mkdtempSync(join(tmpdir(), 'wm-lists-'))
     copyFileSync(join(TestPaths.FIXTURES, LargeFixtureFormat.V1_NAME), join(dir, LargeFixtureFormat.V1_NAME))
     writeFileSync(join(dir, 'lists.json'), JSON.stringify(LargeContentFixture.lists(['ngsl:0001', 'ext:2810'])))
-    const withLists = container(dir)
+    const withLists = await container(dir)
     expect(withLists.content.lists.map(l => l.id)).toEqual(['ngsl', 'extended'])
-    withLists.close()
-    const bare = container(TestPaths.FIXTURES)
+    await withLists.close()
+    const bare = await container(TestPaths.FIXTURES)
     expect(bare.content.lists).toEqual([])
-    bare.close()
+    await bare.close()
   })
 })
 

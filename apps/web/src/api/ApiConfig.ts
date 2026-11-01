@@ -26,6 +26,9 @@ export class ApiConfig {
   static readonly HEADER_CONTENT_TYPE = 'Content-Type'
   static readonly HTTP_NO_CONTENT = 204
   static readonly HTTP_SERVER_ERROR = 500
+  static readonly HTTP_UNAUTHORIZED = 401
+  static readonly HEADER_AUTHORIZATION = 'Authorization'
+  static readonly BEARER = 'Bearer'
   static readonly NO_STATUS = 0
 }
 
@@ -45,6 +48,12 @@ export class ApiRoutes {
   static readonly EXPORT = '/export'
   static readonly IMPORT = '/import'
   static readonly PROGRESS = '/progress'
+
+  static readonly PUBLIC_PATHS: readonly string[] = [ApiRoutes.HEALTH, ApiRoutes.WORDS, ApiRoutes.CREDITS]
+
+  static isPublic(path: string): boolean {
+    return ApiRoutes.PUBLIC_PATHS.includes(path)
+  }
 
   static search(q: string, limit?: number): string {
     const params = new URLSearchParams({ q })

@@ -14,13 +14,13 @@ export class SessionManager {
     private readonly planner = new SessionPlanner(),
   ) {}
 
-  plan(date: string): SessionResponse {
+  async plan(date: string): Promise<SessionResponse> {
     return this.planner.plan({
       words: this.content.words,
-      userWords: this.repo.listUserWords(),
+      userWords: await this.repo.listUserWords(),
       today: date,
-      dailyNew: this.settings.get().dailyNew,
-      doneNew: this.days.get(date).newLearned,
+      dailyNew: (await this.settings.get()).dailyNew,
+      doneNew: (await this.days.get(date)).newLearned,
     })
   }
 }

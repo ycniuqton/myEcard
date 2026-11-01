@@ -4,6 +4,6 @@ import { BaseRoute } from '../BaseRoute'
 /** GET /state. */
 export class StateRoute extends BaseRoute {
   register(api: FastifyInstance): void {
-    api.get('/state', async () => this.c.progress.state())
+    api.get('/state', async req => this.scope(req).progress.state())
   }
 }

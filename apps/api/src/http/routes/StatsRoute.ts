@@ -5,6 +5,6 @@ import { Schemas } from '../Schemas'
 /** GET /stats. */
 export class StatsRoute extends BaseRoute {
   register(api: FastifyInstance): void {
-    api.get('/stats', async req => this.c.stats.compute(this.parse(Schemas.stats, req.query).date))
+    api.get('/stats', async req => this.scope(req).stats.compute(this.parse(Schemas.stats, req.query).date))
   }
 }

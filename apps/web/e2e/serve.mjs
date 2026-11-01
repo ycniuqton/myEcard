@@ -7,15 +7,18 @@ const here = dirname(fileURLToPath(import.meta.url))
 const apiRoot = join(here, '..', '..', 'api')
 const port = process.env.E2E_PORT ?? '3105'
 const dbDir = join(here, `.tmp-${port}`)
-const dbPath = join(dbDir, 'e2e.db')
 
 const webRoot = join(here, '..')
-if (!existsSync(join(webRoot, 'dist', 'index.html'))) execSync('npx vite build', { cwd: webRoot, stdio: 'inherit' })
+const authMode = process.env.E2E_AUTH_MODE ?? 'none'
+const webDist = join(webRoot, `dist-e2e-${port}`)
+rmSync(webDist, { recursive: true, force: true })
+execSync(`npx vite build --outDir "${webDist}" --emptyOutDir`, { cwd: webRoot, stdio: 'inherit', env: { ...process.env, VITE_AUTH_MODE: authMode } })
 
 rmSync(dbDir, { recursive: true, force: true })
 mkdirSync(dbDir, { recursive: true })
 
-const env = { ...process.env, PORT: port, HOST: '127.0.0.1', DB_PATH: dbPath }
+const env = { ...process.env, AUTH_MODE: 'none', PORT: port, HOST: '127.0.0.1', PGLITE_DIR: join(dbDir, 'pglite'), WEB_DIST: webDist }
+delete env.DATABASE_URL
 if (process.env.E2E_LARGE_CONTENT) {
   const script = join(here, 'large-content.ts')
   env.CONTENT_DIR = execSync(`node --import tsx "${script}"`, { cwd: apiRoot, encoding: 'utf8' }).trim()

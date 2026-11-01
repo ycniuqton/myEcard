@@ -1,42 +1,39 @@
-import type BetterSqlite3 from 'better-sqlite3'
-import type { Migration } from './Migration'
+import type { SqlClient, SqlExecutor } from './SqlClient'
+import { MigrationFiles, type SqlMigration } from './MigrationFiles'
 
-export enum MetaKey {
-  SchemaVersion = 'schema_version',
+/** Statements of the schema_migrations bookkeeping table. */
+export class MigrationQueries {
+  static readonly CREATE = `CREATE TABLE IF NOT EXISTS schema_migrations (
+    version integer PRIMARY KEY, name text NOT NULL, applied_at text NOT NULL)`
+  static readonly MAX_VERSION = 'SELECT COALESCE(MAX(version), 0) AS version FROM schema_migrations'
+  static readonly RECORD = 'INSERT INTO schema_migrations (version, name, applied_at) VALUES ($1, $2, $3)'
 }
 
-/** Statements that maintain the schema-version bookkeeping table. */
-export class MetaQueries {
-  static readonly CREATE = 'CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)'
-  static readonly SELECT_VALUE = 'SELECT value FROM meta WHERE key = ?'
-  static readonly UPSERT_VALUE =
-    'INSERT INTO meta (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value'
-}
-
-/** Applies pending migrations in version order, each in its own transaction. */
+/** Applies pending SQL migrations in version order, each in its own transaction. Works on any SqlClient. */
 export class Migrator {
-  constructor(private readonly db: BetterSqlite3.Database, private readonly migrations: Migration[]) {}
+  constructor(
+    private readonly db: SqlClient,
+    private readonly files: MigrationFiles = new MigrationFiles(),
+    private readonly now: () => string = () => new Date().toISOString(),
+  ) {}
 
-  run(): number {
-    this.db.exec(MetaQueries.CREATE)
-    const current = this.currentVersion()
-    const pending = this.migrations.filter(m => m.version > current).sort((a, b) => a.version - b.version)
-    for (const migration of pending) this.apply(migration)
+  async run(): Promise<number> {
+    await this.db.exec(MigrationQueries.CREATE)
+    const current = await this.currentVersion()
+    const pending = this.files.load().filter(m => m.version > current)
+    for (const migration of pending) await this.apply(migration)
     return this.currentVersion()
   }
 
-  currentVersion(): number {
-    const row = this.db.prepare(MetaQueries.SELECT_VALUE).get(MetaKey.SchemaVersion) as
-      | { value: string }
-      | undefined
-    return row ? Number(row.value) : 0
+  async currentVersion(): Promise<number> {
+    const result = await this.db.query<{ version: number | string }>(MigrationQueries.MAX_VERSION)
+    return Number(result.rows[0].version)
   }
 
-  private apply(migration: Migration): void {
-    const step = this.db.transaction(() => {
-      migration.up(this.db)
-      this.db.prepare(MetaQueries.UPSERT_VALUE).run(MetaKey.SchemaVersion, String(migration.version))
+  private apply(migration: SqlMigration): Promise<void> {
+    return this.db.transaction(async (tx: SqlExecutor) => {
+      await tx.exec(migration.sql)
+      await tx.query(MigrationQueries.RECORD, [migration.version, migration.name, this.now()])
     })
-    step()
   }
 }

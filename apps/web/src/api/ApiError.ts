@@ -17,6 +17,10 @@ export class ApiError extends Error {
     return this.kind === ApiErrorKind.Network || this.kind === ApiErrorKind.Timeout
   }
 
+  get isUnauthenticated(): boolean {
+    return this.status === ApiConfig.HTTP_UNAUTHORIZED
+  }
+
   get isRetryable(): boolean {
     return this.isOffline || this.status >= ApiConfig.HTTP_SERVER_ERROR
   }

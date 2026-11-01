@@ -87,6 +87,7 @@ export class AppController extends BaseController {
   dispose(): void {
     this.unsubscribes.forEach(u => u())
     this.unsubscribes = []
+    this.started = false
     this.deps.engine.stop()
   }
 
