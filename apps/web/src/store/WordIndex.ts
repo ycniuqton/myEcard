@@ -31,13 +31,13 @@ export class WordIndex {
     return this.words.length
   }
 
-  search(query: string, limit: number, statusOf: StatusLookup): SearchHit[] {
+  search(query: string, limit: number, statusOf: StatusLookup, withVi = true): SearchHit[] {
     const q = query.trim().toLowerCase()
     if (!q) return []
     const starts = this.sorted.filter(w => this.startsWith(w, q))
     const rest = this.sorted.filter(w => !this.startsWith(w, q) && w.lemma.toLowerCase().includes(q))
-    const meaning = this.sorted.filter(w => !this.lemmaMatches(w, q) && this.viMatches(w, q))
-    return [...starts, ...rest, ...meaning].slice(0, limit).map(w => this.toHit(w, statusOf(w.id)))
+    const meaning = withVi ? this.sorted.filter(w => !this.lemmaMatches(w, q) && this.viMatches(w, q)) : []
+    return [...starts, ...rest, ...meaning].slice(0, limit).map(w => this.toHit(w, statusOf(w.id), withVi))
   }
 
   private lemmaMatches(w: Word, q: string): boolean {
@@ -68,9 +68,9 @@ export class WordIndex {
     this.byBand.set(w.band, band)
   }
 
-  private toHit(w: Word, status: Status): SearchHit {
+  private toHit(w: Word, status: Status, withVi: boolean): SearchHit {
     const text = w.definitions[0]?.text ?? ''
-    const definition = w.vi ? `${w.vi}${WordIndex.HIT_SEPARATOR}${text}` : text
+    const definition = withVi && w.vi ? `${w.vi}${WordIndex.HIT_SEPARATOR}${text}` : text
     return { id: w.id, lemma: w.lemma, rank: w.rank, definition, status }
   }
 }

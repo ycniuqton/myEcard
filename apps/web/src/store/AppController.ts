@@ -3,6 +3,7 @@ import { ApiError, WordAction, type MutationResult, type ProgressSnapshot } from
 import { BaseController } from './BaseController'
 import { RecentSearches } from './RecentSearches'
 import { StoreConfig } from './StoreConfig'
+import { MeaningLanguage, MeaningLanguageStore } from '../features/common/MeaningLanguage'
 import { WordIndex } from './WordIndex'
 import type { StoreContext } from './StoreTypes'
 
@@ -73,7 +74,8 @@ export class AppController extends BaseController {
 
   search(query: string): SearchHit[] {
     const statusOf = (id: string) => this.state.userWords.get(id)?.status ?? Status.Unknown
-    return this.state.index.search(query, StoreConfig.SEARCH_LIMIT, statusOf)
+    const withVi = MeaningLanguageStore.get() === MeaningLanguage.Both
+    return this.state.index.search(query, StoreConfig.SEARCH_LIMIT, statusOf, withVi)
   }
 
   async rememberSearch(query: string): Promise<void> {

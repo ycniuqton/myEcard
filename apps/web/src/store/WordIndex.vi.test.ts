@@ -28,6 +28,12 @@ describe('WordIndex Vietnamese search', () => {
     expect(new WordIndex(WORDS).search('house', LIMIT, status)[0].definition).toBe('nhà, nhà ở — def house')
   })
 
+  it('ignores Vietnamese entirely when switched off', () => {
+    const index = new WordIndex(WORDS)
+    expect(index.search('đẹp', LIMIT, status, false)).toEqual([])
+    expect(index.search('house', LIMIT, status, false)[0].definition).toBe('def house')
+  })
+
   it('still ranks lemma matches before Vietnamese matches', () => {
     const index = new WordIndex([word(1, 'dep-test'), word(2, 'beautiful', 'đẹp')])
     expect(index.search('dep', LIMIT, status).map(h => h.lemma)).toEqual(['dep-test', 'beautiful'])
